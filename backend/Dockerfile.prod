@@ -1,0 +1,31 @@
+# Este es un dockerfile enfocado en producción.
+
+# Se destaca por:
+# Minimizar el tamaño de la imagen.
+# Incluir solo los componentes necesarios para la ejecución.
+# Ejecutar la aplicación de la manera más eficiente para producción (directamente el .jar).
+# Separar las fases de construcción y ejecución para optimizar la imagen final.
+
+# Contiene multi-stage builds para separar la construcción de la aplicación y la ejecución de la misma.
+
+
+# --- Fase 1: Construcción con Maven ---
+# Se utiliza una imagen de Amazon Corretto 21 con Maven para compilar la aplicación.
+FROM amazoncorretto:21-jdk-alpine AS builder
+WORKDIR /app/build
+COPY backend/pom.xml .
+COPY backend/.mvn ./.mvn
+# Descarga todas las dependencias de Maven para permitir la construcción offline y configura la conexión SSL para evitar posibles problemas de certificados en algunos entornos de construcción.
+RUN ./mvnw dependency:go-offline -B -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true
+COPY backend/src ./src
+# Se compila la aplicación con Maven, pero se omiten las pruebas para acelerar el proceso.
+RUN ./mvnw package -B -DskipTests
+
+# --- Fase 2: Ejecución ---
+# Utiliza una imagen base más ligera con solo el JRE de Amazon Corretto 21 para ejecutar la aplicación, porque reduce significativamente el tamaño de la imagen final
+FROM amazoncorretto:21-jre-alpine
+WORKDIR /app
+# Se copia únicamente el artefacto precompilado desde la etapa de construcción a la etapa de ejecución.
+COPY --from=builder /app/build/target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]

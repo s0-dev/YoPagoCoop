@@ -1,0 +1,24 @@
+# Este es un dockerfile enfocado en desarrollo.
+
+# Se destaca por:
+# Incluir el JDK para permitir la compilación y ejecución con Maven.
+# Copiar el código fuente para reflejar cambios sin reconstruir la imagen (con volumen montado).
+# Ejecutar la aplicación con el plugin de Spring Boot para desarrollo (recarga en caliente).
+# Incluir herramientas de desarrollo (como inotify-tools).
+
+# esta imagen incluye el JDK, es necesario para compilar y ejecutar la aplicacion directamente con Maven durante desarrollo.
+FROM amazoncorretto:21-alpine3.21-jdk
+WORKDIR /app
+# copia el codigo fuente completo, esto permite que los cambios en el codigo se reflejen en el contenedor sin necesidad de reconstruir la imagen.
+COPY backend/pom.xml ./
+COPY backend/.mvn ./mvn
+COPY backend/mvnw ./
+RUN mkdir -p ./.mvn && mv ./mvn/* ./.mvn/
+RUN chmod +x ./mvnw
+# instala inotify-tools, una herramienta que permite observar cambios en el sistema de archivos.
+
+RUN apk add --no-cache inotify-tools
+RUN ./mvnw dependency:go-offline
+COPY backend/src ./src
+# inicia la aplicación utilizando el plugin de Spring Boot de Maven, ya que este realiza comprobaciones y recargas en caliente de los cambios en el código fuente.
+CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=dev"]
