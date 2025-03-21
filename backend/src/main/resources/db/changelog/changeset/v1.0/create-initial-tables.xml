@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+> 
+
+<!-- declaramos las tablas postgreSQL dentro de changeSet, que son una unidad básica de cambio en liquibase -->
+
+<!-- <changeSet></changeSet> es para crear un cambio, necesitas agregar el id de la tabla y el nombre del autor, luego creas la tabla dentro de ella. -->
+
+<changeSet id="create_schools_table" author="admin">
+  <!-- 
+  createTable -> para crear una tabla, 
+  column -> declara la función de la columna, dentro declaramos el nombre y tipo y otras propierdades como unique
+  constraints -> las restricciones de la columna, como primary key, nullable, etc.
+   -->
+  <createTable tableName="schools">
+
+    <column name="id" type="BIGINT" autoIncrement="true">
+      <constraints primaryKey="true" nullable="false"/>
+    </column>
+
+    <column name="name" type="VARCHAR(255)">
+      <constraints nullable="false"/>
+    </column>
+
+    <column name="address" type="VARCHAR(255)"/>
+    
+    <column name="cuit" type="VARCHAR(11)">
+        <constraints unique="true"/>
+    </column>
+
+    <column name="email" type="VARCHAR(255)"/>
+
+    <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+  </createTable>
+</changeSet>
+
+<changeSet id="create_members_table" author="admin">
+
+    <createTable tableName="members">
+
+        <column name="id" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+
+        <column name="school_id" type="BIGINT">
+            <constraints nullable="false" foreignKeyName="fk_member_school" references="schools(id)"/>
+        </column>
+
+        <column name="name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+        </column>
+
+        <column name="lastname" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+        </column>
+
+        <column name="email" type="VARCHAR(255)">
+            <constraints unique="true" nullable="false"/>
+        </column>
+
+        <column name="document_number" type="VARCHAR(20)">
+           <constraints unique="true" nullable="false"/>
+        </column>
+
+        <column name="phone_number" type="VARCHAR(20)">
+          <constraints nullable="false"/>
+        </column>
+
+        <column name="son_year" type="INT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+</changeSet>
+
+<!-- tabla especifica de los atributos para cada institucion -->
+<changeSet id="create_school_specific_attributes_table" author="admin">
+    <createTable tableName="school_specific_attributes">
+
+        <column name="id" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+
+        <column name="school_id" type="BIGINT">
+            <constraints nullable="false"/>
+        </column>
+
+        <column name="attribute_name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+        </column>
+
+        <column name="data_type" type="VARCHAR(50)">
+            <constraints nullable="false"/>
+        </column>
+
+        <column name="is_required" type="BOOLEAN" defaultValue="false"/>
+    </createTable>
+</changeSet>
+
+<!-- tabla para los atributos dentro de los miembros opcionales -->
+<changeSet id="create_member_attributes_table" author="admin">
+
+    <createTable tableName="member_attributes">
+
+        <column name="id" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+
+        <column name="member_id" type="BIGINT" >
+            <constraints foreignKeyName="fk_member_attributes_member" references="members(id)" nullable="false"/>
+        </column>
+
+        <column name="school_specific_attribute_id" type="BIGINT">
+            <constraints foreignKeyName="fk_member_attributes_ssa" references="school_specific_attributes(id)" nullable="false"/>
+        </column>
+
+        <column name="attribute_value" type="VARCHAR(255)"/>
+    </createTable>
+</changeSet>
+
+<!-- <changeSet id="add_member_attributes_unique_constraint" author="admin">
+    <addUniqueConstraint 
+        tableName="member_attributes"
+        columnNames="member_id, school_specific_attribute_id"
+        constraintName="uq_member_attribute"/>
+</changeSet> -->
+
+</databaseChangeLog>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- archivo de registro de cambios, al igual que las etiquetas html, y poner las clases dentro de ellos -->
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+> <!-- puede tener varias líneas de clases -->
+<!-- incluir el archivo de las migraciones -->
+<include file="db/changelog/changeset/v1.0/create-initial-tables.xml"/>
+</databaseChangeLog>
