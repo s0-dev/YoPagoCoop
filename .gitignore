@@ -13,7 +13,6 @@ out/
 bin/
 tmp/
 *.tmp
-*.log
 *.bak
 *.swp
 .project
@@ -23,7 +22,7 @@ tmp/
 # Maven
 target/
 pom.xml.backup
-.mvn/wrapper/maven-wrapper.jar # Ignorar el wrapper descargado, mejor que cada dev lo descargue
+.mvn/wrapper/maven-wrapper.jar
 
 # Gradle
 .gradle/
@@ -55,6 +54,10 @@ frontend/.vercel/
 .env
 backend/.env
 frontend/.env
+*.env.local
+*.env.development
+*.env.production
+*.env.*.local
 
 # Logs
 *.log
@@ -73,3 +76,7 @@ Thumbs.db
 *.dylib
 *.cd
 *.elf
+
+# idx specific
+.idx/
+idx-manifest.json # Ejemplo
