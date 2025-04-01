@@ -1,0 +1,48 @@
+# Tabla de atributos de la escuela
+
+databaseChangeLog:
+  - changeSet:
+      id: create_school_specific_attributes_table
+      author: admin
+      preConditions:
+        - not:
+            - tableExists:
+                tableName: school_specific_attributes
+      changes:
+        - createTable:
+            tableName: school_specific_attributes
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_school_specific_attributes
+                    nullable: false
+              - column:
+                  name: school_id
+                  type: BIGSERIAL
+                  constraints:
+                    nullable: false
+              - column:
+                  name: attribute_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: data_type
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_required
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+        # Clave foránea para la tabla de atributos de la escuela
+        - addForeignKeyConstraint:
+            baseTableName: school_specific_attributes
+            baseColumnNames: school_id
+            constraintName: fk_school_specific_attributes_school
+            referencedTableName: schools
+            referencedColumnNames: id

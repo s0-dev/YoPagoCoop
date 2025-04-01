@@ -1,0 +1,64 @@
+# Tabla de miembros
+
+databaseChangeLog:
+  - changeSet:
+      id: create-members-table
+      author: admin
+      preConditions:
+        - not:
+            - tableExists:
+                tableName: members
+      changes:
+        - createTable:
+            tableName: members
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_members
+                    nullable: false
+              - column:
+                  name: school_id
+                  type: BIGSERIAL
+                  constraints:
+                    nullable: false
+              - column:
+                  name: dni
+                  # Si el dni mas de 999 999 999 apagar el sistema jaja
+                  type: VARCHAR(9)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastname
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        # Clave foranea de la tabla schools
+        - addForeignKeyConstraint:
+            baseTableName: members
+            baseColumnNames: school_id
+            constraintName: fk_members_school_id
+            referencedTableName: schools
+            referencedColumnNames: id
