@@ -1,4 +1,4 @@
-package com.yopagocoop.yopagocoop_backend.controller;
+package com.yopagocoop.yopagocoop_backend.controllers;
 
 public class MemberController {
 

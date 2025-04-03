@@ -1,6 +1,6 @@
 package com.yopagocoop.yopagocoop_backend.services;
 
-public class MemberServices {
+public class MemberService {
 
 }
 

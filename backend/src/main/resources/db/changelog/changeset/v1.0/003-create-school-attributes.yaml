@@ -21,7 +21,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: school_id
-                  type: BIGSERIAL
+                  type: BIGINT
                   constraints:
                     nullable: false
               - column:
