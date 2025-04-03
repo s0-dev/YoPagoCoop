@@ -33,3 +33,12 @@ docker-compose -f docker-compose-dev.yaml down -v
 ```
 
 En caso de necesitar borrar la base de datos y volver a inciarla, para cambiar ciertas columnas dentro de las tablas, agregarle el `-v`, esto borra **TODOS** los datos de la base de datos y el backend, no utilizar este comando en producción ni cuando ya hayan datos almacenados en tu base de datos!
+
+---
+
+Endpoints Actuales:
+
+- /api/schools
+  contiene: POST, GET
+- /api/schools/{id}
+  contiene: PUT, DELETE
