@@ -15,7 +15,7 @@ public interface SchoolRepository extends JpaRepository<School, Long> {
   // JpaRepository ya proporciona métodos básicos como:
   // save(), findById(), findAll(), deleteById(), etc.
 
-  // TODO: Revisar que funciones integrar en el repositorio
+  // TODO: SCHOOL_REPOSITORY Revisar que funciones integrar en el repositorio
 
   Optional<School> findByCuit(String cuit);
 }

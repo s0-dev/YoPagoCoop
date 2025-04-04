@@ -1,11 +1,62 @@
 package com.yopagocoop.yopagocoop_backend.services;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.yopagocoop.yopagocoop_backend.models.Member;
+import com.yopagocoop.yopagocoop_backend.repositories.MemberRepository;
+
+@Service
 public class MemberService {
+
+  private final MemberRepository memberRepository;
+
+  public MemberService(MemberRepository memberRepository) {
+    this.memberRepository = memberRepository;
+  }
+  // TODO: MEMBER_SERVICE
+  // Revisar bien cuales serian los servicios a utilizar en los miembros
+
+  public List<Member> getAllMembers() {
+    return memberRepository.findAll();
+  }
+
+  public Optional<Member> getMemberById(Long id) {
+    return memberRepository.findById(id);
+  }
+
+  public Optional<Member> getMemberByDni(String dni) {
+    return memberRepository.findByDni(dni);
+  }
+
+  public Member createMember(Member member) {
+    // TODO: MEMBER_SERVICE
+    // Agregar validaciones antes de guardar
+    return memberRepository.save(member);
+  }
+
+  public Member updateMember(Member member, Long id) {
+    Optional<Member> existingMember = memberRepository.findById(id);
+    if (existingMember.isPresent()) {
+      Member memberToUpdate = existingMember.get();
+      // TODO: MEMBER_SERVICE
+      // Los campos a actualizar del miembro
+      return memberRepository.save(memberToUpdate);
+    } else {
+      return null;
+    }
+  }
+
+  public void deleteMember(Long id) {
+    memberRepository.deleteById(id);
+  }
 
 }
 
 /*
- * TODO: in member services, create
+ * TODO: MEMBER_SERVICE
  * 1. Método para Crear Miembro
  * - Recibir los datos básicos del miembro y el school_id
  * - Guardar la información básica del miembro en la tabla members

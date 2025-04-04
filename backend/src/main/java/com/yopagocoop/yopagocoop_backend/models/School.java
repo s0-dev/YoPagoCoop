@@ -19,6 +19,7 @@ public class School {
   @Column(nullable = false)
   private String address;
 
+  // TODO: CUIT TEST, string de entre 10 a 12 digitos
   @Column(nullable = false, unique = true, length = 11) // unico y longitud de 11
   private String cuit;
 

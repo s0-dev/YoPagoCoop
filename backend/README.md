@@ -1,8 +1,8 @@
 # Backend README
 
-Para correr el proyecto con el backend con el entorno de desarrollo:
+## Para correr el proyecto con el backend con el entorno de desarrollo:
 
-1. **Construcción inicial:**
+### 1. **Construcción inicial:**
 
 ```bash
 docker-compose -f docker-compose-dev.yaml up -d --build
@@ -10,7 +10,7 @@ docker-compose -f docker-compose-dev.yaml up -d --build
 
 Esta es la primera vez que levantas los contenedores o después de haber modificado los archivos que afectan la construcción de la imagen (Dockerfile, `pom.xml`, etc.).
 
-2. **Desarrollo continuo:**
+### 2. **Desarrollo continuo:**
 
 ```bash
 docker-compose -f docker-compose-dev.yaml up -d
@@ -18,13 +18,13 @@ docker-compose -f docker-compose-dev.yaml up -d
 
 Después de la construcción inicial, cuando realices cambios en tus archivos Java dentro de la carpeta `src/`, guarda los cambios en tu IDE. Spring Boot DevTools detectará estos cambios y reiniciará automáticamente la aplicación dentro del contenedor. **No necesitas volver a ejecutar `--build` en este punto.**
 
-3. **Detener los contenedores al finalizar el trabajo:**
+### 3. **Detener los contenedores al finalizar el trabajo:**
 
 ```bash
 docker-compose -f docker-compose-dev.yaml down
 ```
 
-Este comando detiene y elimina los contenedores cuando terminas de trabajar en tu proyecto.
+### Este comando detiene y elimina los contenedores cuando terminas de trabajar en tu proyecto.
 
 ⚠️ **Detener los contenedores y borrar datos persistentes:** ⚠️
 
@@ -36,9 +36,18 @@ En caso de necesitar borrar la base de datos y volver a inciarla, para cambiar c
 
 ---
 
-Endpoints Actuales:
+## Endpoints Actuales:
+
+### Para las instituciones
 
 - /api/schools
   contiene: POST, GET
 - /api/schools/{id}
+  contiene: PUT, DELETE
+
+### Para los miembros
+
+- /api/members
+  contiene: POST, GET
+- /api/members/{id}
   contiene: PUT, DELETE

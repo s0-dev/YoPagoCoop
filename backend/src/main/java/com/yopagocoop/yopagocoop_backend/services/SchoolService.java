@@ -17,7 +17,8 @@ public class SchoolService {
     this.schoolRepository = schoolRepository;
   }
 
-  // TODO: Revisar bien cuales serian los servicios a utilizar en las escuelas
+  // TODO: SCHOOL_SERVICE
+  // Revisar bien cuales serian los servicios a utilizar en las escuelas
 
   public List<School> getAllSchools() {
     return schoolRepository.findAll();
