@@ -1,1 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Nova+Mono&display=swap");
+
 @import "tailwindcss";
+
+/* Tema claro, por defecto */
+@theme {
+  --color-background: #eeeeee;
+  --color-text: #0b0b0b;
+
+  --color-primary: #ceae00;
+  --color-primary-darker: #b39500;
+  --color-primary-lighter: #eadd5e;
+
+  --color-secundary: #388e3c;
+  --color-secundary-darker: #2b6e2e;
+  --color-secundary-lighter: #81c784;
+
+  --color-accent: #3d749c;
+  --color-accent-darker: #2c5774;
+  --color-accent-lighter: #72a0c1;
+
+  --color-success: #4caf50;
+  --color-error: #f44336;
+  --color-warning: #ff9800;
+  --color-info: #2196f3;
+
+  --font-sans: Montserrat, sans-serif;
+  --font-serif: Cormorant, serif;
+  --font-mono: Nova Mono, monospace;
+}
+
+/* Tema oscuro, con la data del theme */
+[data-theme="dark"] {
+  --color-background: #0b0b0b;
+  --color-text: #eeeeee;
+
+  --color-primary: #ceae00;
+  --color-primary-darker: #b39500;
+  --color-primary-lighter: #eadd5e;
+
+  --color-secundary: #66bb6a;
+  --color-secundary-darker: #388e3c;
+  --color-secundary-lighter: #a5d6a7;
+
+  --color-accent: #432861;
+  --color-accent-darker: #301d46;
+  --color-accent-lighter: #7e57c2;
+
+  --color-success: #81c784;
+  --color-error: #e57373;
+  --color-warning: #ffb74d;
+  --color-info: #64b5f6;
+}

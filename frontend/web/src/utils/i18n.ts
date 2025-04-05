@@ -1,0 +1,1 @@
+// Utilidades para manejar los idiomas en la aplicación
