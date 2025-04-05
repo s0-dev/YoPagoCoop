@@ -1,3 +1,5 @@
+.gitignore
+
 # IntelliJ IDEA
 .idea/
 *.iws
@@ -41,14 +43,14 @@ build/
 *.class
 
 # Frontend (Astro/SvelteKit con Node.js/npm)
-frontend/node_modules/
-frontend/.svelte-kit/
-frontend/.astro/
-frontend/dist/
-frontend/.cache/
-frontend/.output/
-frontend/.netlify/
-frontend/.vercel/
+frontend/web/node_modules/
+frontend/web/.svelte-kit/
+frontend/web/.astro/
+frontend/web/dist/
+frontend/web/.cache/
+frontend/web/.output/
+frontend/web/.netlify/
+frontend/web/.vercel/
 
 # Archivos de entorno
 .env

@@ -36,5 +36,24 @@ services:
     # Reinicia el contenedor si falla, para recuperarse de errores inesperados
     restart: on-failure
 
+  web:
+    build:
+      context: ./frontend/web
+      dockerfile: Dockerfile.dev
+    container_name: ${CONTAINER_WEB}
+    ports:
+      - ${WEB_PORT}:${WEB_PORT}
+    volumes:
+      - type: bind
+        source: ./frontend/web
+        target: /app
+        consistency: delegated
+      - web_node_modules:/app/node_modules
+    environment:
+      API_URL: "${API_URL}"
+    command: npm run dev -- --host ${WEB_HOST} --port ${WEB_PORT} --open
+    restart: on-failure
+
 volumes:
   db_data:
+  web_node_modules:
