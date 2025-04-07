@@ -1,5 +1,10 @@
 # Backend README
 
+## Para tener los docs del backend, verificar `docs/`
+
+- [Tests](docs/TESTS.md)
+- [Base de datos](docs/DATABASE.md)
+
 ## Para correr el proyecto con el backend con el entorno de desarrollo:
 
 ### 1. **Construcción inicial:**
