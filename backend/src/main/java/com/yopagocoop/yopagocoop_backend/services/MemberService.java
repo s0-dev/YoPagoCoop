@@ -28,7 +28,7 @@ public class MemberService {
   }
 
   public Optional<Member> getMemberByDni(String dni) {
-    return memberRepository.findByDni(dni);
+    return memberRepository.buscarPorDni(dni);
   }
 
   public Member createMember(Member member) {

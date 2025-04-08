@@ -15,7 +15,7 @@ public class Member {
   @Column(nullable = false)
   private Long school_id;
 
-  // TODO: DNI TEST, string de entre 7 a 9 digitos
+  // HECHO: DNI TEST, string de entre 7 a 9 digitos
   @Column(nullable = false, unique = true, length = 9)
   private String dni;
 
@@ -25,11 +25,11 @@ public class Member {
   @Column(nullable = false)
   private String lastname;
 
-  // TODO: EMAIL TEST, distintos formatos de email
+  // HECHO: EMAIL TEST, distintos formatos de email
   @Column(nullable = false)
   private String email;
 
-  // TODO: TELEFONO TEST, distintos formatos de celular
+  // HECHO: TELEFONO TEST, distintos formatos de celular
   @Column(nullable = false, length = 20)
   private String phone;
 

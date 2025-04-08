@@ -12,6 +12,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
   // TODO: MEMBER_REPOSITORY Revisar que funciones integrar en el repositorio
 
-  Optional<Member> findByDni(String dni);
+  Optional<Member> buscarPorDni(String dni);
 
 }
