@@ -36,6 +36,9 @@ services:
     # Reinicia el contenedor si falla, para recuperarse de errores inesperados
     restart: on-failure
 
+  # TODO: FIX DOCKER-COMPOSE, NO FUNCIONA
+  # falla /app, corregir dockerfile.dev en frontend/
+
   web:
     build:
       context: ./frontend/web
