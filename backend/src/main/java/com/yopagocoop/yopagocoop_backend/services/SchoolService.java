@@ -33,7 +33,7 @@ public class SchoolService {
   }
 
   public School createSchool(School school) {
-    // TODO: Agregar validaciones antes de guardar
+
     return schoolRepository.save(school);
   }
 

@@ -16,6 +16,9 @@ public interface SchoolRepository extends JpaRepository<School, Long> {
   // save(), findById(), findAll(), deleteById(), etc.
 
   // TODO: SCHOOL_REPOSITORY Revisar que funciones integrar en el repositorio
+  // Agregar una query la cual genere atributos especificos por escuela
+  // Agregar una query la cual muestre todos los atributos especificos de la
+  // escuela seleccionada via ID
 
   Optional<School> findByCuit(String cuit);
 }

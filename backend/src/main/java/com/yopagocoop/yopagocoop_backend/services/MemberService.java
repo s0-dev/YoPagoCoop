@@ -32,8 +32,7 @@ public class MemberService {
   }
 
   public Member createMember(Member member) {
-    // TODO: MEMBER_SERVICE
-    // Agregar validaciones antes de guardar
+
     return memberRepository.save(member);
   }
 
