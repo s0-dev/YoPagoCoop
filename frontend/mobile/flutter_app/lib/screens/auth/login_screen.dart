@@ -23,7 +23,9 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     // Colors from your Figma design
     const Color backgroundColor = Color.fromARGB(255, 0, 0, 0); // Dark background
-    const Color primaryPurple = Color(0xFF9C88FF); // Purple accent
+    const Color buttonColor = Color(0xFF432861); // Button color
+    const Color primaryPurple = Color(0xFF432861); // Purple accent
+    const Color textColor = Color(0xFFEEEEEE); // Text color
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -43,15 +45,23 @@ class _LoginScreenState extends State<LoginScreen> {
             SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+
+                  Image.asset(
+                        'lib/assets/images/secure-login.png',
+                        width: 250,
+                        height: 250,
+                  ),
+
+
                   // Title
                   const Text(
-                    'Iniciar sesión',
+                    'Hola, otra vez!',
                     style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: textColor,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -59,14 +69,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   // Subtitle
                   const Text(
                     'Bienvenido de vuelta, ingresa tus datos para iniciar sesión',
-                    style: TextStyle(fontSize: 16, color: Colors.white70),
+                    style: TextStyle(fontSize: 16, color: textColor),
                   ),
                   const SizedBox(height: 32),
 
                   // Email Field
                   TextField(
                     controller: _emailController,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: textColor),
                     decoration: InputDecoration(
                       labelText: 'Email',
                       labelStyle: const TextStyle(color: primaryPurple),
@@ -93,9 +103,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: const TextStyle(color: Colors.white),
                     obscureText: _obscureText,
                     decoration: InputDecoration(
-                      labelText: 'Password',
+                      labelText: 'Contraseña',
                       labelStyle: const TextStyle(color: primaryPurple),
-                      hintText: 'Password',
+                      hintText: 'Tu contraseña',
                       hintStyle: const TextStyle(color: Colors.white54),
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -139,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 48,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: primaryPurple,
+                        backgroundColor: buttonColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24),
                         ),

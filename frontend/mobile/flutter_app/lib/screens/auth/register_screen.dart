@@ -81,6 +81,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      
                       // Title
                       const Text(
                         'Crear cuenta',
