@@ -1,4 +1,4 @@
-package com.yopagocoop.yopagocoop_backend.utils.Schools;
+package com.yopagocoop.yopagocoop_backend.utils.Escuelas;
 
 public class ValidadorCuit {
   // esValido

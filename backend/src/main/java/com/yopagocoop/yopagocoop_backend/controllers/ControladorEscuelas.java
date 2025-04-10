@@ -1,5 +1,5 @@
 package com.yopagocoop.yopagocoop_backend.controllers;
 
-public class SchoolControllerIntegrationTest {
+public class ControladorEscuelas {
 
 }

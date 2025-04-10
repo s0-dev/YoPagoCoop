@@ -1,5 +1,5 @@
 package com.yopagocoop.yopagocoop_backend.repositories;
 
-public class SchoolRepositoryIntegrationTest {
+public class RepositorioMiembrosUnitTest {
 
 }

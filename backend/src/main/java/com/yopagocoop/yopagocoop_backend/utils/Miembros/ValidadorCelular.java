@@ -1,4 +1,4 @@
-package com.yopagocoop.yopagocoop_backend.utils.Members;
+package com.yopagocoop.yopagocoop_backend.utils.Miembros;
 
 public class ValidadorCelular {
   // esValido

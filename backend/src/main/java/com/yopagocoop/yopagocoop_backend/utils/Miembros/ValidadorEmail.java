@@ -1,4 +1,4 @@
-package com.yopagocoop.yopagocoop_backend.utils.Members;
+package com.yopagocoop.yopagocoop_backend.utils.Miembros;
 
 import org.apache.commons.validator.routines.DomainValidator;
 import org.apache.commons.validator.routines.EmailValidator;

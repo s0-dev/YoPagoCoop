@@ -10,16 +10,16 @@ import lombok.Data;
 // Especifica el nombre de la tabla en la base de datos
 @Table(name = "schools")
 @Data // genera getter, setters equals, hash y tostring
-public class School {
+public class Escuela {
   @Id // Indica que este atributo es la clave primaria
   @GeneratedValue(strategy = GenerationType.IDENTITY) // genera automáticamente por la base de datos
   private Long id;
 
   @Column(nullable = false) // No puede ser nulo
-  private String name;
+  private String nombre;
 
   @Column(nullable = false)
-  private String address;
+  private String direccion;
 
   // HECHO: CUIT TEST, string de entre 10 a 12 digitos
   @Column(nullable = false, unique = true, length = 11) // unico y longitud de 11
@@ -29,6 +29,6 @@ public class School {
   private String email;
 
   @Column(nullable = false, updatable = false) // no puede actualizarse una vez se declara
-  private LocalDateTime created_at = LocalDateTime.now();
+  private LocalDateTime creado_el = LocalDateTime.now();
 
 }
