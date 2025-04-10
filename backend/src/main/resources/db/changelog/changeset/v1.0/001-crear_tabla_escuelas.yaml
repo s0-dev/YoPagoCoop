@@ -1,14 +1,14 @@
 databaseChangeLog:
   - changeSet:
-      id: create_schools_table
+      id: crear_tabla_escuelas
       author: admin
       preConditions:
         - not:
             - tableExists:
-                tableName: schools
+                tableName: escuelas
       changes: 
         - createTable:
-            tableName: schools
+            tableName: escuelas
             columns:
               - column:
                   name: id
@@ -18,12 +18,12 @@ databaseChangeLog:
                     primaryKeyName: pk_schools
                     nullable: false
               - column:
-                  name: name
+                  name: nombre
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: address
+                  name: apellido
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
@@ -39,6 +39,6 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: created_at
+                  name: creado_el
                   type: TIMESTAMP
                   defaultValueComputed: CURRENT_TIMESTAMP

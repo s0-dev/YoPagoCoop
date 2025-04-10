@@ -2,50 +2,50 @@
 
 databaseChangeLog:
   - changeSet:
-      id: create_member_specific_attributes_table
+      id: crear_tabla_atributos_especificos_miembros
       author: admin
       preConditions:
         - not:
             - tableExists:
-                tableName: member_specific_attributes
+                tableName: atributos_especificos_miembros
       changes:
         - createTable:
-            tableName: member_specific_attributes
+            tableName: atributos_especificos_miembros
             columns:
               - column:
                   name: id
                   type: BIGSERIAL
                   constraints:
                     primaryKey: true
-                    primaryKeyName: pk_member_specific_attributes
+                    primaryKeyName: pk_atributo_especifico_miembro
                     nullable: false
               - column:
-                  name: member_id
+                  name: id_miembro
                   type: BIGINT
                   constraints:
                     nullable: false
               - column:
-                  name: school_specific_attribute_id
+                  name: id_atributo_especifico_escuela
                   type: BIGINT
                   constraints:
                     nullable: false
               - column:
-                  name: attribute_value
+                  name: valor_atributo
                   type: VARCHAR(255)
         # Claves foráneas
         - addForeignKeyConstraint:
-            baseTableName: member_specific_attributes
-            baseColumnNames: member_id
-            constraintName: fk_member_attributes_member
-            referencedTableName: members
+            baseTableName: atributos_especificos_miembros
+            baseColumnNames: id_miembro
+            constraintName: fk_id_miembro
+            referencedTableName: miembros
             referencedColumnNames: id
         - addForeignKeyConstraint:
-            baseTableName: member_specific_attributes
-            baseColumnNames: school_specific_attribute_id
-            constraintName: fk_member_attributes_ssa
-            referencedTableName: school_specific_attributes
+            baseTableName: atributos_especificos_miembros
+            baseColumnNames: id_atributo_especifico_escuela
+            constraintName: fk_id_atributo_especifico_escuela
+            referencedTableName: atributos_especificos_escuelas
             referencedColumnNames: id
         - addUniqueConstraint:
-            tableName: member_specific_attributes
-            columnNames: member_id, school_specific_attribute_id
+            tableName: atributos_especificos_miembros
+            columnNames: id_miembro, id_atributo_especifico_escuela
             constraintName: uq_member_specific_attributes

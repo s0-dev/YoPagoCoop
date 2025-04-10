@@ -2,25 +2,25 @@
 
 databaseChangeLog:
   - changeSet:
-      id: create-members-table
+      id: crear_tabla_miembros
       author: admin
       preConditions:
         - not:
             - tableExists:
-                tableName: members
+                tableName: miembros
       changes:
         - createTable:
-            tableName: members
+            tableName: miembros
             columns:
               - column:
                   name: id
                   type: BIGSERIAL
                   constraints:
                     primaryKey: true
-                    primaryKeyName: pk_members
+                    primaryKeyName: pk_miembros
                     nullable: false
               - column:
-                  name: school_id
+                  name: id_escuela
                   type: BIGINT
                   constraints:
                     nullable: false
@@ -32,12 +32,12 @@ databaseChangeLog:
                     unique: true
                     nullable: false
               - column:
-                  name: name
+                  name: nombre
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: lastname
+                  name: apellido
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
@@ -47,18 +47,18 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: phone
+                  name: celular
                   type: VARCHAR(20)
                   constraints:
                     nullable: false
               - column:
-                  name: created_at
+                  name: creado_el
                   type: TIMESTAMP
                   defaultValueComputed: CURRENT_TIMESTAMP
-        # Clave foranea de la tabla schools
+        # Clave foranea de la tabla escuelas
         - addForeignKeyConstraint:
-            baseTableName: members
-            baseColumnNames: school_id
-            constraintName: fk_members_school_id
-            referencedTableName: schools
+            baseTableName: miembros
+            baseColumnNames: id_escuela
+            constraintName: fk_escuela_identificador_miembros
+            referencedTableName: escuelas
             referencedColumnNames: id

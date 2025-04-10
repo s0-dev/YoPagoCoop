@@ -1,13 +1,13 @@
 databaseChangeLog:
   - include:
-      file: changeset/v1.0/001-create-schools-table.yaml
+      file: changeset/v1.0/001-crear_tabla_escuelas.yaml
       relativeToChangelogFile: true
   - include:
-      file: changeset/v1.0/002-create-members-table.yaml
+      file: changeset/v1.0/002-crear_tabla_atributos_especificos_escuelas.yaml
       relativeToChangelogFile: true
   - include:
-      file: changeset/v1.0/003-create-school-attributes.yaml
+      file: changeset/v1.0/003-crear_tabla_miembros.yaml
       relativeToChangelogFile: true
   - include:
-      file: changeset/v1.0/004-create-member-attributes.yaml
+      file: changeset/v1.0/004-crear_tabla_atributos_especificos_miembros.yaml
       relativeToChangelogFile: true

@@ -2,47 +2,47 @@
 
 databaseChangeLog:
   - changeSet:
-      id: create_school_specific_attributes_table
+      id: crear_tabla_atributos_especificos_escuelas
       author: admin
       preConditions:
         - not:
             - tableExists:
-                tableName: school_specific_attributes
+                tableName: atributos_especificos_escuelas
       changes:
         - createTable:
-            tableName: school_specific_attributes
+            tableName: atributos_especificos_escuelas
             columns:
               - column:
                   name: id
                   type: BIGSERIAL
                   constraints:
                     primaryKey: true
-                    primaryKeyName: pk_school_specific_attributes
+                    primaryKeyName: pk_atributo_especifico_escuela
                     nullable: false
               - column:
-                  name: school_id
+                  name: id_escuela
                   type: BIGINT
                   constraints:
                     nullable: false
               - column:
-                  name: attribute_name
+                  name: nombre_atributo
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: data_type
+                  name: tipo_de_dato
                   type: VARCHAR(50)
                   constraints:
                     nullable: false
               - column:
-                  name: is_required
+                  name: es_requerido
                   type: BOOLEAN
                   constraints:
                     nullable: false
         # Clave foránea para la tabla de atributos de la escuela
         - addForeignKeyConstraint:
-            baseTableName: school_specific_attributes
-            baseColumnNames: school_id
-            constraintName: fk_school_specific_attributes_school
-            referencedTableName: schools
+            baseTableName: atributos_especificos_escuelas
+            baseColumnNames: id_escuela
+            constraintName: fk_escuela_identificador_atributo_especifico
+            referencedTableName: escuelas
             referencedColumnNames: id
