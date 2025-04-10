@@ -26,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     const Color buttonColor = Color(0xFF432861); // Button color
     const Color primaryPurple = Color(0xFF432861); // Purple accent
     const Color textColor = Color(0xFFEEEEEE); // Text color
+    
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -39,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween, // Distribute space
+          mainAxisAlignment: MainAxisAlignment.start, // Distribute space
           children: [
             // Content above the button
             SingleChildScrollView(
@@ -49,9 +50,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
 
                   Image.asset(
-                        'lib/assets/images/secure-login.png',
+                        'lib/assets/images/secureLogin.png',
                         width: 250,
-                        height: 250,
+                        height: 200,
                   ),
 
 
@@ -79,16 +80,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: const TextStyle(color: textColor),
                     decoration: InputDecoration(
                       labelText: 'Email',
-                      labelStyle: const TextStyle(color: primaryPurple),
-                      hintText: 'Tu email',
-                      hintStyle: const TextStyle(color: Colors.white54),
+                      labelStyle: const TextStyle(color: textColor),
+                      filled: true, // Esto activa el fondo
+                      fillColor: Color.fromARGB(255, 28, 29, 28),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: primaryPurple),
+                        borderSide: const BorderSide(color: backgroundColor),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
-                          color: primaryPurple,
+                          color: backgroundColor,
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(8),
@@ -97,22 +98,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 16),
 
+                  
                   // Password Field
                   TextField(
                     controller: _passwordController,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: textColor),
                     obscureText: _obscureText,
                     decoration: InputDecoration(
                       labelText: 'Contraseña',
-                      labelStyle: const TextStyle(color: primaryPurple),
+                      labelStyle: const TextStyle(color: textColor),
                       hintText: 'Tu contraseña',
                       hintStyle: const TextStyle(color: Colors.white54),
+                      filled: true, // Esto activa el fondo
+                      fillColor: Color.fromARGB(255, 28, 29, 28),
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscureText
                               ? Icons.visibility_off
                               : Icons.visibility,
-                          color: primaryPurple,
+                          color: backgroundColor,
                         ),
                         onPressed: () {
                           setState(() {
@@ -121,23 +125,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: primaryPurple),
+                        borderSide: const BorderSide(color: backgroundColor),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
-                          color: primaryPurple,
+                          color: backgroundColor,
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 170),
                 ],
               ),
             ),
-
+            
             // Grouping the button and the registration text together
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
@@ -167,10 +171,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   // "No tienes una cuenta? Regístrate"
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Text(
-                        'No tienes una cuenta? ',
+                        'No tienes una cuenta?',
                         style: TextStyle(color: Colors.white70),
                       ),
                       GestureDetector(

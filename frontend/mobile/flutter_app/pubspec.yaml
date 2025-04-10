@@ -26,8 +26,8 @@ flutter:
   assets:
     - lib/assets/images/YPC_logo.png
     - lib/assets/images/VectorSumate.png
-    - lib/assets/images/secure-login.png
-    - lib/assets/images/secure_register.png
+    - lib/assets/images/secureLogin.png
+    - lib/assets/images/secureRegister.png
   uses-material-design: true
 
   fonts:

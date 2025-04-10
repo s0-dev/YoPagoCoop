@@ -53,8 +53,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const Color backgroundColor = Color(0xFF1C1B2E);
-    const Color primaryPurple = Color(0xFF9C88FF);
+    const Color backgroundColor = Color.fromARGB(255, 0, 0, 0); // Dark background
+    const Color buttonColor = Color(0xFF432861); // Button color
+    const Color primaryPurple = Color(0xFF432861); // Purple accent
+    const Color textColor = Color(0xFFEEEEEE); 
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -82,6 +84,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       
+                      Align(
+                        alignment: Alignment.center,
+                        child: Image.asset(
+                          'lib/assets/images/secureRegister.png',
+                          width: 250,
+                          height: 200,
+                        ),
+                      ),
+ 
+                      
                       // Title
                       const Text(
                         'Crear cuenta',
@@ -103,20 +115,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       // Email Field
                       TextFormField(
                         controller: _emailController,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: textColor),
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: 'Email',
-                          labelStyle: const TextStyle(color: primaryPurple),
+                          labelStyle: const TextStyle(color: textColor),
                           hintText: 'tu@email.com',
                           hintStyle: const TextStyle(color: Colors.white54),
+                          filled: true, // Esto activa el fondo
+                          fillColor: Color.fromARGB(255, 28, 29, 28),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: primaryPurple),
+                            borderSide: const BorderSide(color: backgroundColor),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: primaryPurple,
+                              color: backgroundColor,
                               width: 2,
                             ),
                             borderRadius: BorderRadius.circular(8),
@@ -137,19 +151,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       // Password Field
                       TextFormField(
                         controller: _passwordController,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: textColor),
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                           labelText: 'Contraseña',
-                          labelStyle: const TextStyle(color: primaryPurple),
+                          labelStyle: const TextStyle(color: textColor),
                           hintText: 'Mínimo 8 caracteres',
                           hintStyle: const TextStyle(color: Colors.white54),
+                          filled: true, // Esto activa el fondo
+                          fillColor: Color.fromARGB(255, 28, 29, 28),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureText
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: primaryPurple,
+                              color: backgroundColor,
                             ),
                             onPressed: () {
                               setState(() {
@@ -158,12 +174,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             },
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: primaryPurple),
+                            borderSide: const BorderSide(color: backgroundColor),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: primaryPurple,
+                              color: backgroundColor,
                               width: 2,
                             ),
                             borderRadius: BorderRadius.circular(8),
@@ -184,19 +200,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       // Confirm Password Field
                       TextFormField(
                         controller: _confirmPasswordController,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: textColor),
                         obscureText: _obscureConfirmText,
                         decoration: InputDecoration(
                           labelText: 'Confirmar contraseña',
-                          labelStyle: const TextStyle(color: primaryPurple),
+                          labelStyle: const TextStyle(color: textColor),
                           hintText: 'Repite tu contraseña',
                           hintStyle: const TextStyle(color: Colors.white54),
+                          filled: true, // Esto activa el fondo
+                          fillColor: Color.fromARGB(255, 28, 29, 28),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureConfirmText
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: primaryPurple,
+                              color: backgroundColor,
                             ),
                             onPressed: () {
                               setState(() {
@@ -205,12 +223,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             },
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: primaryPurple),
+                            borderSide: const BorderSide(color: backgroundColor),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: primaryPurple,
+                              color: backgroundColor,
                               width: 2,
                             ),
                             borderRadius: BorderRadius.circular(8),
@@ -251,7 +269,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       onPressed: _submitForm,
                       child: const Text(
                         'Registrarse',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                        style: TextStyle(fontSize: 16, color: textColor),
                       ),
                     ),
                   ),
@@ -259,7 +277,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   // Login Link
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Text(
                         'Ya tienes una cuenta? ',
