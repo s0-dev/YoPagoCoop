@@ -39,6 +39,6 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: fechaCreacion
+                  name: fecha_creacion
                   type: TIMESTAMP
                   defaultValueComputed: CURRENT_TIMESTAMP

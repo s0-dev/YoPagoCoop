@@ -2,6 +2,8 @@ package com.yopagocoop.yopagocoop_backend.modelos;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -29,6 +31,7 @@ public class Escuela {
   private String email;
 
   @Column(nullable = false, updatable = false) // no puede actualizarse una vez se declara
-  private LocalDateTime fechaCreacion = LocalDateTime.now();
+  @CreationTimestamp
+  private LocalDateTime fecha_creacion = LocalDateTime.now();
 
 }

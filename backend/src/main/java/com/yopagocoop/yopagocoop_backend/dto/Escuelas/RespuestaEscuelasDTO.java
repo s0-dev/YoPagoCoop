@@ -12,6 +12,6 @@ public class RespuestaEscuelasDTO {
     private String direccion;
     private String cuit;
     private String email;
-    private LocalDateTime fechaCreacion;
+    private LocalDateTime fecha_creacion;
 
 }
