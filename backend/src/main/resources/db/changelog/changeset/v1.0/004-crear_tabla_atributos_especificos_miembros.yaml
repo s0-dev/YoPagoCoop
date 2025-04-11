@@ -45,7 +45,7 @@ databaseChangeLog:
             baseTableName: atributos_especificos_miembros
             baseColumnNames: idAtributoEspecificoEscuela
             constraintName: fkIdAtributoEspecificoEscuela
-            referencedTableName: atributosEspecificosEscuelas
+            referencedTableName: atributos_especificos_escuelas
             referencedColumnNames: id
         - addUniqueConstraint:
             tableName: atributos_especificos_miembros
