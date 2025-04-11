@@ -8,7 +8,7 @@ import lombok.Data;
 // Indica que es una entidad JPA, osea se mapea a una tabla de la db
 @Entity
 // Especifica el nombre de la tabla en la base de datos
-@Table(name = "schools")
+@Table(name = "escuelas")
 @Data // genera getter, setters equals, hash y tostring
 public class Escuela {
   @Id // Indica que este atributo es la clave primaria
@@ -29,6 +29,6 @@ public class Escuela {
   private String email;
 
   @Column(nullable = false, updatable = false) // no puede actualizarse una vez se declara
-  private LocalDateTime creado_el = LocalDateTime.now();
+  private LocalDateTime fechaCreacion = LocalDateTime.now();
 
 }

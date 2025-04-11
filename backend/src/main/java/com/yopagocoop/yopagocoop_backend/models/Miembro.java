@@ -14,7 +14,7 @@ public class Miembro {
   private Long id;
 
   @Column(nullable = false)
-  private Long id_escuela;
+  private Long idEscuela;
 
   // HECHO: DNI TEST, string de entre 7 a 9 digitos
   @Column(nullable = false, unique = true, length = 9)
@@ -35,5 +35,5 @@ public class Miembro {
   private String celular;
 
   @Column(nullable = false, updatable = false)
-  private LocalDateTime creado_el = LocalDateTime.now();
+  private LocalDateTime fechaCreacion = LocalDateTime.now();
 }

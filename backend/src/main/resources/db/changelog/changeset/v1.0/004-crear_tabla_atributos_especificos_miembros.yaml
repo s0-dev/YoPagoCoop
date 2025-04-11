@@ -17,35 +17,37 @@ databaseChangeLog:
                   type: BIGSERIAL
                   constraints:
                     primaryKey: true
-                    primaryKeyName: pk_atributo_especifico_miembro
+                    primaryKeyName: pkAtributoEspecificoMiembro
                     nullable: false
               - column:
-                  name: id_miembro
+                  name: idMiembro
                   type: BIGINT
                   constraints:
                     nullable: false
               - column:
-                  name: id_atributo_especifico_escuela
+                  name: idAtributoEspecificoEscuela
                   type: BIGINT
                   constraints:
                     nullable: false
               - column:
-                  name: valor_atributo
+                  name: valorAtributo
                   type: VARCHAR(255)
+                  constraints:
+                    nullable: false
         # Claves foráneas
         - addForeignKeyConstraint:
             baseTableName: atributos_especificos_miembros
-            baseColumnNames: id_miembro
-            constraintName: fk_id_miembro
+            baseColumnNames: idMiembro
+            constraintName: fkIdMiembro
             referencedTableName: miembros
             referencedColumnNames: id
         - addForeignKeyConstraint:
             baseTableName: atributos_especificos_miembros
-            baseColumnNames: id_atributo_especifico_escuela
-            constraintName: fk_id_atributo_especifico_escuela
-            referencedTableName: atributos_especificos_escuelas
+            baseColumnNames: idAtributoEspecificoEscuela
+            constraintName: fkIdAtributoEspecificoEscuela
+            referencedTableName: atributosEspecificosEscuelas
             referencedColumnNames: id
         - addUniqueConstraint:
             tableName: atributos_especificos_miembros
-            columnNames: id_miembro, id_atributo_especifico_escuela
-            constraintName: uq_member_specific_attributes
+            columnNames: idMiembro, idAtributoEspecificoEscuela
+            constraintName: uqAtributiosEspecificosMiembro

@@ -17,10 +17,10 @@ databaseChangeLog:
                   type: BIGSERIAL
                   constraints:
                     primaryKey: true
-                    primaryKeyName: pk_miembros
+                    primaryKeyName: pkMiembros
                     nullable: false
               - column:
-                  name: id_escuela
+                  name: idEscuela
                   type: BIGINT
                   constraints:
                     nullable: false
@@ -52,13 +52,13 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: creado_el
+                  name: fechaCreacion
                   type: TIMESTAMP
                   defaultValueComputed: CURRENT_TIMESTAMP
         # Clave foranea de la tabla escuelas
         - addForeignKeyConstraint:
             baseTableName: miembros
-            baseColumnNames: id_escuela
-            constraintName: fk_escuela_identificador_miembros
+            baseColumnNames: idEscuela
+            constraintName: fkEscuelaIdentificadorMiembros
             referencedTableName: escuelas
             referencedColumnNames: id

@@ -15,7 +15,7 @@ databaseChangeLog:
                   type: BIGSERIAL
                   constraints:
                     primaryKey: true
-                    primaryKeyName: pk_schools
+                    primaryKeyName: pkEscuela
                     nullable: false
               - column:
                   name: nombre
@@ -39,6 +39,6 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: creado_el
+                  name: fechaCreacion
                   type: TIMESTAMP
                   defaultValueComputed: CURRENT_TIMESTAMP
