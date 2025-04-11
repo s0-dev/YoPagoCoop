@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.yopagocoop.yopagocoop_backend.utils.Miembros.ValidadorCelular;
-
 public class ValidadorCelularUnitTest {
 
   public final ValidadorCelular validadorCelular = new ValidadorCelular();

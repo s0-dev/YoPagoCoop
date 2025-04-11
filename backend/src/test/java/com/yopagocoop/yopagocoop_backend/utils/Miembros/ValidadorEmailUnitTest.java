@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.yopagocoop.yopagocoop_backend.utils.Miembros.ValidadorEmail;
-
 public class ValidadorEmailUnitTest {
 
   public final ValidadorEmail validadorEmail = new ValidadorEmail();

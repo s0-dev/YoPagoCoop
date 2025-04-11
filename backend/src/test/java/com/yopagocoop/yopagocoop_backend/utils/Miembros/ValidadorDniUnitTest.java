@@ -2,8 +2,6 @@ package com.yopagocoop.yopagocoop_backend.utils.Miembros;
 
 import org.junit.jupiter.api.Test;
 
-import com.yopagocoop.yopagocoop_backend.utils.Miembros.ValidadorDni;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ValidadorDniUnitTest {

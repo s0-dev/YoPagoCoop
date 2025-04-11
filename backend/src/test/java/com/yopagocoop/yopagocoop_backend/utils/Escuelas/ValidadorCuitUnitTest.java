@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.yopagocoop.yopagocoop_backend.utils.Escuelas.ValidadorCuit;
-
 public class ValidadorCuitUnitTest {
 
   private final ValidadorCuit validadorCuit = new ValidadorCuit();
