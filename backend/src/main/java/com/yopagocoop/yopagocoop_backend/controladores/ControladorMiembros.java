@@ -1,4 +1,4 @@
-package com.yopagocoop.yopagocoop_backend.controllers;
+package com.yopagocoop.yopagocoop_backend.controladores;
 
 public class ControladorMiembros {
 

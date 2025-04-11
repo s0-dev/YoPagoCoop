@@ -1,4 +1,4 @@
-package com.yopagocoop.yopagocoop_backend.models;
+package com.yopagocoop.yopagocoop_backend.modelos;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -13,7 +13,7 @@ public class AtributosEscuelas {
 
     @Column(nullable = false)
     private Long idEscuela;
-    
+
     @Column(nullable = false)
     private String nombreAtributo;
 

@@ -1,4 +1,4 @@
-package com.yopagocoop.yopagocoop_backend.models;
+package com.yopagocoop.yopagocoop_backend.modelos;
 
 import java.time.LocalDateTime;
 

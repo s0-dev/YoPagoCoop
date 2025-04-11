@@ -1,4 +1,4 @@
-package com.yopagocoop.yopagocoop_backend.services;
+package com.yopagocoop.yopagocoop_backend.servicios;
 
 public interface ServicioMiembros {
 
