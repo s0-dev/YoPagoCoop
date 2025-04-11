@@ -1,4 +1,4 @@
-package com.yopagocoop.yopagocoop_backend.dto;
+package com.yopagocoop.yopagocoop_backend.dto.Miembros;
 
 import lombok.Data;
 
