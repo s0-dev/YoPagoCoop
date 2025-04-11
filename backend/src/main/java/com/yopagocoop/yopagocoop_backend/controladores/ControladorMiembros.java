@@ -5,7 +5,6 @@ public class ControladorMiembros {
 }
 
 /*
- * TODO: in member controller, create
  * 1. Endpoint para Registrar/Crear Miembro
  * - Recibir los datos básicos del miembro (de la tabla members).
  * - Recibir un conjunto de atributos específicos de la escuela (un mapa o lista

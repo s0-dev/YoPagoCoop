@@ -5,7 +5,7 @@ public interface ServicioMiembros {
 }
 
 /*
- * TODO: MEMBER_SERVICE
+ * 
  * 1. Método para Crear Miembro
  * - Recibir los datos básicos del miembro y el school_id
  * - Guardar la información básica del miembro en la tabla members
