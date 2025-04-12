@@ -4,9 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.stereotype.Repository;
 
-import com.yopagocoop.yopagocoop_backend.modelos.Miembro;
+import com.yopagocoop.yopagocoop_backend.modelos.AtributosMiembros;
 
 @Repository
-public interface AtributosMiembrosRepositorio extends JpaRepository<Miembro, Long> {
+public interface AtributosMiembrosRepositorio extends JpaRepository<AtributosMiembros, Long> {
 
 }

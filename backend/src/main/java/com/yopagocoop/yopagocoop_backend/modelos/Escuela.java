@@ -33,7 +33,7 @@ public class Escuela {
 
   @Column(nullable = false, updatable = false) // no puede actualizarse una vez se declara
   @CreationTimestamp
-  private LocalDateTime fechaCreacion = LocalDateTime.now();
+  private LocalDateTime fechaCreacion;
 
   // Una escuela tiene muchos atributos especificos
   // mappedBy = "escuela" -> hace referencia al nombre del atributo en la clase

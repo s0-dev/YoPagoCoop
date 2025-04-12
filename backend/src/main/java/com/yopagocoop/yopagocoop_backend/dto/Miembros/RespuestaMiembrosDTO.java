@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 @Data
 public class RespuestaMiembrosDTO {
     private Long id;
-    private Long idEscuela;
     private String dni;
     private String nombre;
     private String apellido;
