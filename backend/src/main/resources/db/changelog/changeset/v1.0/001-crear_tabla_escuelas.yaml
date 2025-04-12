@@ -18,19 +18,19 @@ databaseChangeLog:
                     primaryKeyName: pkEscuela
                     nullable: false
               - column:
-                  name: nombre
+                  name: nombre                  
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: direccion
+                  name: direccion                  
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: cuit
+                  name: cuit                  
                   type: VARCHAR(11)
-                  constraints:
+                  constraints:                    
                     unique: true
                     nullable: false
               - column:
@@ -38,7 +38,7 @@ databaseChangeLog:
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
-              - column:
-                  name: fecha_creacion
-                  type: TIMESTAMP
-                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:                  
+                  name: fecha_creacion                  
+                  type: TIMESTAMP                  
+                  defaultValueComputed: CURRENT_TIMESTAMP                  

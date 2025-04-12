@@ -1,5 +1,3 @@
-# Tabla de atributos de la escuela
-
 databaseChangeLog:
   - changeSet:
       id: crear_tabla_atributos_especificos_escuelas
@@ -17,32 +15,32 @@ databaseChangeLog:
                   type: BIGSERIAL
                   constraints:
                     primaryKey: true
-                    primaryKeyName: pkAtributoEspecificoEscuela
+                    primaryKeyName: pk_atributo_especifico_escuela
                     nullable: false
               - column:
-                  name: idEscuela
+                  name: id_escuela
                   type: BIGINT
                   constraints:
                     nullable: false
               - column:
-                  name: nombreAtributo
+                  name: nombre_atributo
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: tipoDato
+                  name: tipo_dato
                   type: VARCHAR(50)
                   constraints:
                     nullable: false
               - column:
-                  name: esRequerido
+                  name: es_requerido
                   type: BOOLEAN
                   constraints:
                     nullable: false
         # Clave foránea para la tabla de atributos de la escuela
         - addForeignKeyConstraint:
             baseTableName: atributos_especificos_escuelas
-            baseColumnNames: idEscuela
-            constraintName: fkEscuelaIdentificadorAtributoEspecifico
+            baseColumnNames: id_escuela
+            constraintName: fk_escuela_identificador_atributo_especifico
             referencedTableName: escuelas
             referencedColumnNames: id

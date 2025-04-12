@@ -11,8 +11,9 @@ public class AtributosEscuelas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long idEscuela;
+    @ManyToOne
+    @JoinColumn(name = "idEscuela", nullable = false)
+    private Escuela escuela;
 
     @Column(nullable = false)
     private String nombreAtributo;
@@ -22,5 +23,4 @@ public class AtributosEscuelas {
 
     @Column(nullable = false)
     private Boolean esRequerido;
-
 }
