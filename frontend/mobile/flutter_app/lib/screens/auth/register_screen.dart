@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import '../../server/server.dart'; // Asegurate de importar AuthService correctamente
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -29,34 +27,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      final response = await http.post(
-        Uri.parse('http://localhost:8080/auth/register'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<String, String>{
-          'email': _emailController.text,
-          'password': _passwordController.text,
-        }),
-      );
-      if (response.statusCode == 200) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Registro exitoso!')));
+      final email = _emailController.text.trim();
+      final password = _passwordController.text;
+
+      final errorMessage = await AuthService.register(email, password);
+
+      if (errorMessage != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(errorMessage)),
+        );
       } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Error en el registro!')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Registro exitoso!')),
+        );
+        Navigator.pushReplacementNamed(context, 'home', arguments: email);
       }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    const Color backgroundColor = Color.fromARGB(255, 0, 0, 0); // Dark background
-    const Color buttonColor = Color(0xFF432861); // Button color
-    const Color primaryPurple = Color(0xFF432861); // Purple accent
-    const Color textColor = Color(0xFFEEEEEE); 
+    const Color backgroundColor = Color.fromARGB(255, 0, 0, 0);
+    const Color buttonColor = Color(0xFF432861);
+    const Color primaryPurple = Color(0xFF432861);
+    const Color textColor = Color(0xFFEEEEEE);
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -71,19 +65,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // Content above the button
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 child: Form(
                   key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      
                       Align(
                         alignment: Alignment.center,
                         child: Image.asset(
@@ -92,9 +81,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           height: 200,
                         ),
                       ),
- 
-                      
-                      // Title
                       const Text(
                         'Crear cuenta',
                         style: TextStyle(
@@ -104,15 +90,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                       const SizedBox(height: 8),
-
-                      // Subtitle
                       const Text(
-                        'Crea una cuenta para comenzar a organizar\ntus mantenimientos',
+                        'Crea una cuenta para comenzar en\nYoPagoCoop',
                         style: TextStyle(fontSize: 16, color: Colors.white70),
                       ),
                       const SizedBox(height: 32),
 
-                      // Email Field
+                      // Email
                       TextFormField(
                         controller: _emailController,
                         style: const TextStyle(color: textColor),
@@ -122,7 +106,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           labelStyle: const TextStyle(color: textColor),
                           hintText: 'tu@email.com',
                           hintStyle: const TextStyle(color: Colors.white54),
-                          filled: true, // Esto activa el fondo
+                          filled: true,
                           fillColor: Color.fromARGB(255, 28, 29, 28),
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(color: backgroundColor),
@@ -148,7 +132,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 16),
 
-                      // Password Field
+                      // Password
                       TextFormField(
                         controller: _passwordController,
                         style: const TextStyle(color: textColor),
@@ -158,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           labelStyle: const TextStyle(color: textColor),
                           hintText: 'Mínimo 8 caracteres',
                           hintStyle: const TextStyle(color: Colors.white54),
-                          filled: true, // Esto activa el fondo
+                          filled: true,
                           fillColor: Color.fromARGB(255, 28, 29, 28),
                           suffixIcon: IconButton(
                             icon: Icon(
@@ -197,7 +181,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 16),
 
-                      // Confirm Password Field
+                      // Confirm Password
                       TextFormField(
                         controller: _confirmPasswordController,
                         style: const TextStyle(color: textColor),
@@ -207,7 +191,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           labelStyle: const TextStyle(color: textColor),
                           hintText: 'Repite tu contraseña',
                           hintStyle: const TextStyle(color: Colors.white54),
-                          filled: true, // Esto activa el fondo
+                          filled: true,
                           fillColor: Color.fromARGB(255, 28, 29, 28),
                           suffixIcon: IconButton(
                             icon: Icon(
@@ -251,7 +235,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ),
 
-            // Grouping the button and the login text together
+            // Botón y texto de login
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
@@ -261,7 +245,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 48,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: primaryPurple,
+                        backgroundColor: buttonColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24),
                         ),
@@ -274,8 +258,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-
-                  // Login Link
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

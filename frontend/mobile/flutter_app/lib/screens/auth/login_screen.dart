@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../server/server.dart'; // Ajustá el path si tu estructura es distinta
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,12 +22,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Colors from your Figma design
-    const Color backgroundColor = Color.fromARGB(255, 0, 0, 0); // Dark background
-    const Color buttonColor = Color(0xFF432861); // Button color
-    const Color primaryPurple = Color(0xFF432861); // Purple accent
-    const Color textColor = Color(0xFFEEEEEE); // Text color
-    
+    const Color backgroundColor = Color.fromARGB(255, 0, 0, 0);
+    const Color buttonColor = Color(0xFF432861);
+    const Color primaryPurple = Color(0xFF432861);
+    const Color textColor = Color(0xFFEEEEEE);
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -40,23 +39,17 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start, // Distribute space
           children: [
-            // Content above the button
             SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-
                   Image.asset(
-                        'lib/assets/images/secureLogin.png',
-                        width: 250,
-                        height: 200,
+                    'lib/assets/images/secureLogin.png',
+                    width: 250,
+                    height: 200,
                   ),
-
-
-                  // Title
                   const Text(
                     'Hola, otra vez!',
                     style: TextStyle(
@@ -66,22 +59,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-
-                  // Subtitle
                   const Text(
                     'Bienvenido de vuelta, ingresa tus datos para iniciar sesión',
                     style: TextStyle(fontSize: 16, color: textColor),
                   ),
                   const SizedBox(height: 32),
 
-                  // Email Field
+                  // Campo de Email
                   TextField(
                     controller: _emailController,
                     style: const TextStyle(color: textColor),
                     decoration: InputDecoration(
                       labelText: 'Email',
                       labelStyle: const TextStyle(color: textColor),
-                      filled: true, // Esto activa el fondo
+                      filled: true,
                       fillColor: Color.fromARGB(255, 28, 29, 28),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: backgroundColor),
@@ -98,8 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 16),
 
-                  
-                  // Password Field
+                  // Campo de Contraseña
                   TextField(
                     controller: _passwordController,
                     style: const TextStyle(color: textColor),
@@ -109,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelStyle: const TextStyle(color: textColor),
                       hintText: 'Tu contraseña',
                       hintStyle: const TextStyle(color: Colors.white54),
-                      filled: true, // Esto activa el fondo
+                      filled: true,
                       fillColor: Color.fromARGB(255, 28, 29, 28),
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -141,13 +131,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            
-            // Grouping the button and the registration text together
+
+            // Botón y texto de registro
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  // "Iniciar sesión" Button
                   SizedBox(
                     width: double.infinity,
                     height: 48,
@@ -158,8 +147,33 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(24),
                         ),
                       ),
-                      onPressed: () {
-                        // Implement login logic
+                      onPressed: () async {
+                        final username = _emailController.text.trim();
+                        final password = _passwordController.text;
+
+                        if (username.isEmpty || password.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text(
+                                    'Por favor completa todos los campos')),
+                          );
+                          return;
+                        }
+
+                        final errorMessage =
+                            await AuthService.login(username, password);
+
+                        if (errorMessage != null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(errorMessage)),
+                          );
+                        } else {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            'home',
+                            arguments: username,
+                          );
+                        }
                       },
                       child: const Text(
                         'Iniciar sesión',
@@ -168,8 +182,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-
-                  // "No tienes una cuenta? Regístrate"
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -179,11 +191,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // Navigate to register
                           Navigator.pushNamed(context, 'register');
                         },
                         child: Text(
-                          'Regístrate',
+                          ' Regístrate',
                           style: TextStyle(
                             color: primaryPurple,
                             fontWeight: FontWeight.bold,

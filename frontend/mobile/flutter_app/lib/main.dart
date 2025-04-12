@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'screens/start/splash_screen.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/register_screen.dart';
-
+import 'screens/home/home_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -24,7 +24,10 @@ class MainApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         'login': (context) => const LoginScreen(),
         'register': (context) => const RegisterScreen(),
-        
+        'home': (context) {
+          final username = ModalRoute.of(context)!.settings.arguments as String;
+          return HomeScreen(username: username);
+        },
       },
     );
   }
