@@ -1,5 +1,7 @@
 package com.yopagocoop.yopagocoop_backend.modelos;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,7 +14,7 @@ public class AtributosEscuelas {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "idEscuela", nullable = false)
+    @JoinColumn(name = "id_escuela", nullable = false)
     private Escuela escuela;
 
     @Column(nullable = false)
@@ -23,4 +25,8 @@ public class AtributosEscuelas {
 
     @Column(nullable = false)
     private Boolean esRequerido;
+
+    // Un atributo puede tener muchos valores de miembros
+    @OneToMany(mappedBy = "atributoEspecificoEscuela", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AtributosMiembros> atributosMiembros;
 }

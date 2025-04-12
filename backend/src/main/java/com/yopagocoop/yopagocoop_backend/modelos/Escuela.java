@@ -1,6 +1,7 @@
 package com.yopagocoop.yopagocoop_backend.modelos;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -32,6 +33,24 @@ public class Escuela {
 
   @Column(nullable = false, updatable = false) // no puede actualizarse una vez se declara
   @CreationTimestamp
-  private LocalDateTime fecha_creacion = LocalDateTime.now();
+  private LocalDateTime fechaCreacion = LocalDateTime.now();
+
+  // Una escuela tiene muchos atributos especificos
+  // mappedBy = "escuela" -> hace referencia al nombre del atributo en la clase
+  // AtributosEscuelas
+  // cascade = CascadeType.ALL -> Las operaciones que se realicen en la escuela se
+  // aplicaran a sus atributos
+  // orphanRemoval = true -> Cuando se borre la escuela se borraran sus atributos
+  @OneToMany(mappedBy = "escuela", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<AtributosEscuelas> atributosEscuelas;
+
+  // Una escuela tiene muchos miembros
+  // mappedBy = "escuela" -> hace referencia al nombre del atributo en la clase
+  // Miembro
+  // cascade = CascadeType.ALL -> Las operaciones que se realicen en la escuela se
+  // aplicaran a sus miembros
+  // orphanRemoval = true -> Cuando se borre la escuela se borraran sus miembros
+  @OneToMany(mappedBy = "escuela", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Miembro> miembros;
 
 }

@@ -1,22 +1,25 @@
 package com.yopagocoop.yopagocoop_backend.modelos;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Table(name = "miembros")
-@Data // genera getter, setters equals, hash y tostring
+@Data
 public class Miembro {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(nullable = false)
-  private Long idEscuela;
+  @ManyToOne
+  @JoinColumn(name = "id_escuela", nullable = false)
+  private Escuela escuela;
 
-  // HECHO: DNI TEST, string de entre 7 a 9 digitos
   @Column(nullable = false, unique = true, length = 9)
   private String dni;
 
@@ -26,14 +29,16 @@ public class Miembro {
   @Column(nullable = false)
   private String apellido;
 
-  // HECHO: EMAIL TEST, distintos formatos de email
   @Column(nullable = false)
   private String email;
 
-  // HECHO: TELEFONO TEST, distintos formatos de celular
   @Column(nullable = false, length = 20)
   private String celular;
 
   @Column(nullable = false, updatable = false)
-  private LocalDateTime fechaCreacion = LocalDateTime.now();
+  @CreationTimestamp
+  private LocalDateTime fechaCreacion;
+
+  @OneToMany(mappedBy = "miembro", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<AtributosMiembros> atributosMiembros;
 }

@@ -11,11 +11,17 @@ public class AtributosMiembros {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private long idMiembro;
+    // Muchos valores de atributos pertenecen a un miembro
+    // name = "id_miembro" -> nombre de la columna en la tabla
+    @ManyToOne
+    @JoinColumn(name = "id_miembro", nullable = false)
+    private Miembro miembro;
 
-    @Column(nullable = false)
-    private Long idAtributoEspecificoEscuela;
+    // Muchos valores de atributos pertenecen a un atributo especifico de escuela
+    // name = "id_atributo_especifico_escuela" -> nombre de la columna en la tabla
+    @ManyToOne
+    @JoinColumn(name = "id_atributo_especifico_escuela", nullable = false)
+    private AtributosEscuelas atributoEspecificoEscuela;
 
     @Column(nullable = false)
     private String valorAtributo;
