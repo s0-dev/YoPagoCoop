@@ -1,11 +1,14 @@
 package com.yopagocoop.yopagocoop_backend.repositorios;
 
+import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 import com.yopagocoop.yopagocoop_backend.modelos.Miembro;
 
-@Repository
 public interface RepositorioMiembros extends JpaRepository<Miembro, Long> {
+  List<Miembro> findAllByEscuelaId(Long escuelaId);
 
+  Optional<Miembro> findByDni(String dni);
+
+  Optional<Miembro> findByEmail(String email);
 }

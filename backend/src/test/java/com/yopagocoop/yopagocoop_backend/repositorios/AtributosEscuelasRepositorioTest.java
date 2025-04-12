@@ -22,6 +22,10 @@ public class AtributosEscuelasRepositorioTest {
   @Autowired
   private RepositorioEscuelas repositorioEscuelas;
 
+  // TODO: TEST_ATRIBUTOS_ESCUELAS
+  // cuando se elimine un miembro, eliminar la relacion entre el miembro y el
+  // atributo especifico.
+
   @BeforeEach
   public void beforeEach() {
     atributosEscuelasRepositorio.deleteAll();
