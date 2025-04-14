@@ -3,6 +3,7 @@ package com.yopagocoop.yopagocoop_backend.servicios;
 import java.util.List;
 
 import com.yopagocoop.yopagocoop_backend.dto.Escuelas.CreacionEscuelasDTO;
+import com.yopagocoop.yopagocoop_backend.dto.Escuelas.RespuestaAtributosEscuelasDTO;
 import com.yopagocoop.yopagocoop_backend.dto.Escuelas.RespuestaEscuelasDTO;
 
 // Indica que esta interfaz es un servicio de Spring
@@ -21,6 +22,8 @@ public interface ServicioEscuelas {
   // Devuelve un DTO respuesta recibiendo el identificador y un DTO de creacion
   RespuestaEscuelasDTO actualizarEscuela(Long id, CreacionEscuelasDTO escuelaDTO);
 
+  List<RespuestaAtributosEscuelasDTO> obtenerAtributosEscuela();
+
   // Borra la escuela sin devolver nada
-  void borrarEscuela(Long id);
+  void eliminarEscuela(Long id);
 }
