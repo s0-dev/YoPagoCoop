@@ -6,6 +6,10 @@ import lombok.Data;
 public class RespuestaAtributosMiembrosDTO {
 
     private Long id;
+    private Long miembroId;
+    private String nombreMiembro;
+    private Long atributoEscuelaId;
+    private String nombreAtributoEscuela;
     private String valorAtributo;
 
 }

@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class CreacionAtributosMiembrosDTO {
 
+    private Long miembroId;
+    private Long atributoEscuelaId;
     private String valorAtributo;
 
 }

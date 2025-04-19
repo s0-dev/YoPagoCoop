@@ -57,7 +57,7 @@ public class AtributosEscuelasRepositorioTest {
     atributosEscuelasRepositorio.save(atributo2);
 
     // Actuar
-    List<AtributosEscuelas> atributos = atributosEscuelasRepositorio.findByEscuela_Id(escuelaGuardada.getId());
+    List<AtributosEscuelas> atributos = atributosEscuelasRepositorio.findByEscuelaId(escuelaGuardada.getId());
 
     // Verificar
     assertEquals(2, atributos.size());

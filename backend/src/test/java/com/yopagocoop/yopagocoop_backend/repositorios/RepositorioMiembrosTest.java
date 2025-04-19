@@ -109,7 +109,7 @@ public class RepositorioMiembrosTest {
   public void testEncontrarTodosLosMiembrosDeUnaEscuela() {
     Escuela escuelaGuardada = crearEscuela("12123456781");
     crearMiembroVoid(escuelaGuardada, "12345678");
-    List<Miembro> miembros = repositorioMiembros.findAllByEscuelaId(escuelaGuardada.getId());
+    List<Miembro> miembros = repositorioMiembros.findByEscuelaId(escuelaGuardada.getId());
     assertEquals(1, miembros.size());
   }
 

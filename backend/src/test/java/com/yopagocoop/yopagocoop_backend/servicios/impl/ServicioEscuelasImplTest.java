@@ -1,11 +1,10 @@
-package com.yopagocoop.yopagocoop_backend.servicios;
+package com.yopagocoop.yopagocoop_backend.servicios.impl;
 
 import com.yopagocoop.yopagocoop_backend.dto.Escuelas.CreacionEscuelasDTO;
 import com.yopagocoop.yopagocoop_backend.dto.Escuelas.RespuestaEscuelasDTO;
 import com.yopagocoop.yopagocoop_backend.modelos.Escuela;
 import com.yopagocoop.yopagocoop_backend.repositorios.AtributosEscuelasRepositorio;
 import com.yopagocoop.yopagocoop_backend.repositorios.RepositorioEscuelas;
-import com.yopagocoop.yopagocoop_backend.servicios.impl.ServicioEscuelasImpl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

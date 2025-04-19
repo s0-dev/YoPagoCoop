@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.yopagocoop.yopagocoop_backend.modelos.Miembro;
 
 public interface RepositorioMiembros extends JpaRepository<Miembro, Long> {
-  List<Miembro> findAllByEscuelaId(Long escuelaId);
+  List<Miembro> findByEscuelaId(Long escuelaId);
 
   Optional<Miembro> findByDni(String dni);
 
