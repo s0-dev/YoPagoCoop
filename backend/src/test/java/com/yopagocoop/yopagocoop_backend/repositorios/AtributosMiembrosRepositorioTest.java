@@ -2,7 +2,6 @@ package com.yopagocoop.yopagocoop_backend.repositorios;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;

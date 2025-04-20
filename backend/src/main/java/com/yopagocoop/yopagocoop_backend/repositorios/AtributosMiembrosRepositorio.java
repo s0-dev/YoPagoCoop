@@ -2,7 +2,6 @@ package com.yopagocoop.yopagocoop_backend.repositorios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.yopagocoop.yopagocoop_backend.modelos.AtributosMiembros;
 import com.yopagocoop.yopagocoop_backend.modelos.Miembro;
@@ -13,6 +12,5 @@ import java.util.List;
 public interface AtributosMiembrosRepositorio extends JpaRepository<AtributosMiembros, Long> {
   List<AtributosMiembros> findByMiembro(Miembro miembro);
 
-  @Transactional
   void deleteByMiembro(Miembro miembro);
 }

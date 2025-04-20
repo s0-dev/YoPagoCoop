@@ -59,8 +59,6 @@ public class RepositorioMiembrosTest {
     miembro.setDni(dni);
     miembro.setNombre("Nombre de Prueba");
     miembro.setApellido("Apellido de Prueba");
-    // TODO: TEST_MIEMBROS
-    // agregar validación email y celular a los tests
     miembro.setEmail("miembro@prueba.com");
     miembro.setCelular("1234567890");
     return repositorioMiembros.save(miembro);

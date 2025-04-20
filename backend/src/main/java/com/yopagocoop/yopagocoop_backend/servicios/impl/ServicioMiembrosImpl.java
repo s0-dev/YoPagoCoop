@@ -24,6 +24,9 @@ import java.util.stream.Collectors;
 @Service
 public class ServicioMiembrosImpl implements ServicioMiembros {
 
+  // TODO: SERVICIO_MIEMBROS
+  // Validación de DNI, CEL, EMAIL
+
   private final RepositorioMiembros repositorioMiembros;
   private final RepositorioEscuelas repositorioEscuelas;
   private final AtributosMiembrosRepositorio atributosMiembrosRepositorio;

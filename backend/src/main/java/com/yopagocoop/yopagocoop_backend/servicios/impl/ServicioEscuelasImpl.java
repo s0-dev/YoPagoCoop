@@ -9,6 +9,8 @@ import com.yopagocoop.yopagocoop_backend.repositorios.AtributosEscuelasRepositor
 import com.yopagocoop.yopagocoop_backend.repositorios.RepositorioEscuelas;
 import com.yopagocoop.yopagocoop_backend.servicios.ServicioEscuelas;
 
+import jakarta.transaction.Transactional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class ServicioEscuelasImpl implements ServicioEscuelas {
+
+  // TODO: SERVICIO_ESCUELAS
+  // Validación CUIT.
 
   private final RepositorioEscuelas repositorioEscuelas;
 
@@ -32,6 +37,7 @@ public class ServicioEscuelasImpl implements ServicioEscuelas {
   }
 
   @Override
+  @Transactional
   public RespuestaEscuelasDTO crearEscuela(CreacionEscuelasDTO escuelaCreacionDTO) {
     Escuela escuela = modelMapper.map(escuelaCreacionDTO, Escuela.class);
     Escuela escuelaGuardada = repositorioEscuelas.save(escuela);
@@ -39,6 +45,7 @@ public class ServicioEscuelasImpl implements ServicioEscuelas {
   }
 
   @Override
+  @Transactional
   public RespuestaEscuelasDTO actualizarEscuela(Long id, CreacionEscuelasDTO escuelaCreacionDTO) {
     if (!repositorioEscuelas.existsById(id)) {
       throw new RuntimeException("La escuela con ID " + id + " no existe.");
@@ -50,6 +57,7 @@ public class ServicioEscuelasImpl implements ServicioEscuelas {
   }
 
   @Override
+  @Transactional
   public void eliminarEscuela(Long id) {
     repositorioEscuelas.deleteById(id);
   }
