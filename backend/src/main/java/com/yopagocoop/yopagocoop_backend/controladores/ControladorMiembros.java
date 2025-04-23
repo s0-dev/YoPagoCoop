@@ -1,24 +1,60 @@
 package com.yopagocoop.yopagocoop_backend.controladores;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.yopagocoop.yopagocoop_backend.dto.Miembros.CreacionMiembrosDTO;
+import com.yopagocoop.yopagocoop_backend.dto.Miembros.RespuestaMiembrosDTO;
+import com.yopagocoop.yopagocoop_backend.servicios.ServicioMiembros;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/miembros")
 public class ControladorMiembros {
 
-}
+  private final ServicioMiembros servicioMiembros;
 
-/*
- * 1. Endpoint para Registrar/Crear Miembro
- * - Recibir los datos básicos del miembro (de la tabla members).
- * - Recibir un conjunto de atributos específicos de la escuela (un mapa o lista
- * de clave-valor donde la clave es el attribute_name o
- * school_specific_attribute_id y el valor es el dato ingresado).
- * - Extraer el school_id del miembro que se está creando.
- * - Llamar al servicio para crear el miembro y sus atributos específicos.
- * 2. Endpoint para Editar Miembro:
- * - Recibir el ID del miembro a editar.
- * - Recibir los datos básicos actualizados del miembro.
- * - Recibir los atributos específicos de la escuela actualizados.
- * - Llamar al servicio para actualizar el miembro y sus atributos específicos.
- * 3. Endpoint para Obtener Miembro por ID
- * - Recibir el ID del miembro.
- * - Llamar al servicio para obtener la información básica del miembro y sus
- * atributos específicos asociados a su school_id.
- */
+  public ControladorMiembros(ServicioMiembros servicioMiembros) {
+    this.servicioMiembros = servicioMiembros;
+  }
+
+  @PostMapping
+  public ResponseEntity<RespuestaMiembrosDTO> crearMiembro(@RequestBody CreacionMiembrosDTO creacionMiembrosDTO) {
+    RespuestaMiembrosDTO miembroCreado = servicioMiembros.crearMiembro(creacionMiembrosDTO);
+    return new ResponseEntity<>(miembroCreado, HttpStatus.CREATED);
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<RespuestaMiembrosDTO> obtenerMiembroPorId(@PathVariable Long id) {
+    RespuestaMiembrosDTO miembro = servicioMiembros.obtenerMiembroPorId(id);
+    return ResponseEntity.ok(miembro);
+  }
+
+  @GetMapping
+  public ResponseEntity<List<RespuestaMiembrosDTO>> obtenerTodosLosMiembros() {
+    List<RespuestaMiembrosDTO> miembros = servicioMiembros.obtenerTodosLosMiembros();
+    return ResponseEntity.ok(miembros);
+  }
+
+  @GetMapping("/escuela/{escuelaId}")
+  public ResponseEntity<List<RespuestaMiembrosDTO>> obtenerMiembrosPorEscuela(@PathVariable Long escuelaId) {
+    List<RespuestaMiembrosDTO> miembros = servicioMiembros.obtenerMiembrosPorEscuela(escuelaId);
+    return ResponseEntity.ok(miembros);
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<RespuestaMiembrosDTO> actualizarMiembro(
+      @PathVariable Long id,
+      @RequestBody CreacionMiembrosDTO creacionMiembrosDTO) {
+    RespuestaMiembrosDTO miembroActualizado = servicioMiembros.actualizarMiembro(id, creacionMiembrosDTO);
+    return ResponseEntity.ok(miembroActualizado);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> eliminarMiembro(@PathVariable Long id) {
+    servicioMiembros.eliminarMiembro(id);
+    return ResponseEntity.noContent().build();
+  }
+}
