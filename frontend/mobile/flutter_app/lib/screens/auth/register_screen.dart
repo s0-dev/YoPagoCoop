@@ -9,6 +9,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final TextEditingController _nombreController =TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
@@ -19,6 +20,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void dispose() {
+    _nombreController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
@@ -27,10 +29,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
+      final nombre = _nombreController.text.trim();
       final email = _emailController.text.trim();
       final password = _passwordController.text;
 
-      final errorMessage = await AuthService.register(email, password);
+      final errorMessage = await AuthService.register(nombre, email, password);
 
       if (errorMessage != null) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -40,7 +43,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Registro exitoso!')),
         );
-        Navigator.pushReplacementNamed(context, 'home', arguments: email);
+        Navigator.pushReplacementNamed(context, 'home', arguments: nombre);
       }
     }
   }
@@ -95,6 +98,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: TextStyle(fontSize: 16, color: Colors.white70),
                       ),
                       const SizedBox(height: 32),
+
+                      TextFormField(
+                        controller: _nombreController,
+                        style: const TextStyle(color: textColor),
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(
+                          labelText: 'Nombre',
+                          labelStyle: const TextStyle(color: textColor),
+                          hintText: 'tu nombre',
+                          hintStyle: const TextStyle(color: Colors.white54),
+                          filled: true,
+                          fillColor: Color.fromARGB(255, 28, 29, 28),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: backgroundColor),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: backgroundColor,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        
+                      ),
+                      const SizedBox(height: 16),
 
                       // Email
                       TextFormField(

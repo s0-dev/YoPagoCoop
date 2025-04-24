@@ -25,8 +25,8 @@ class MainApp extends StatelessWidget {
         'login': (context) => const LoginScreen(),
         'register': (context) => const RegisterScreen(),
         'home': (context) {
-          final username = ModalRoute.of(context)!.settings.arguments as String;
-          return HomeScreen(username: username);
+          final nombre = ModalRoute.of(context)!.settings.arguments as String;
+          return HomeScreen(username: nombre);
         },
       },
     );

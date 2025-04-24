@@ -61,7 +61,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 8),
                   const Text(
                     'Bienvenido de vuelta, ingresa tus datos para iniciar sesión',
-                    style: TextStyle(fontSize: 16, color: textColor),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: textColor
+                    ),
                   ),
                   const SizedBox(height: 32),
 
@@ -160,20 +163,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           return;
                         }
 
-                        final errorMessage =
-                            await AuthService.login(username, password);
+                        final user = await AuthService.login(username, password);
 
-                        if (errorMessage != null) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(errorMessage)),
-                          );
-                        } else {
-                          Navigator.pushReplacementNamed(
-                            context,
-                            'home',
-                            arguments: username,
-                          );
-                        }
+                          if (user == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Usuario o contraseña incorrectos')),
+                            );
+                          } else {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              'home',
+                              arguments: user.nombre, // Pasamos el nombre, no el username
+                            );
+                          }
                       },
                       child: const Text(
                         'Iniciar sesión',
