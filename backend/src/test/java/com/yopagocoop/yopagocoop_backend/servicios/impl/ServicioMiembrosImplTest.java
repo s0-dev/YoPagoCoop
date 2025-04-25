@@ -73,7 +73,6 @@ public class ServicioMiembrosImplTest {
     miembro.setEscuela(escuela);
     miembro.setNombre("Juan");
     miembro.setApellido("Pérez");
-    miembro.setDni("12345678");
     miembro.setEmail("juan@example.com");
     miembro.setCelular("123456789");
     miembro.setFechaCreacion(LocalDateTime.now());
@@ -118,7 +117,6 @@ public class ServicioMiembrosImplTest {
     creacionDTO.setEscuelaId(1L);
     creacionDTO.setNombre("Juan");
     creacionDTO.setApellido("Pérez");
-    creacionDTO.setDni("12345678");
     creacionDTO.setEmail("juan@example.com");
     creacionDTO.setCelular("123456789");
     creacionDTO.setAtributos(atributos);
@@ -130,7 +128,6 @@ public class ServicioMiembrosImplTest {
     respuestaDTO.setEscuelaNombre("Escuela Test");
     respuestaDTO.setNombre("Juan");
     respuestaDTO.setApellido("Pérez");
-    respuestaDTO.setDni("12345678");
     respuestaDTO.setEmail("juan@example.com");
     respuestaDTO.setCelular("123456789");
     respuestaDTO.setFechaCreacion(miembro.getFechaCreacion());

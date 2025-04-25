@@ -42,10 +42,9 @@ public class RepositorioMiembrosTest {
     return repositorioEscuelas.save(escuela);
   }
 
-  private void crearMiembroVoid(Escuela escuela, String dni) {
+  private void crearMiembroVoid(Escuela escuela) {
     Miembro miembro = new Miembro();
     miembro.setEscuela(escuela);
-    miembro.setDni(dni);
     miembro.setNombre("Nombre de Prueba");
     miembro.setApellido("Apellido de Prueba");
     miembro.setEmail("email@prueba.com");
@@ -53,10 +52,9 @@ public class RepositorioMiembrosTest {
     repositorioMiembros.save(miembro);
   }
 
-  private Miembro crearMiembro(Escuela escuela, String dni) {
+  private Miembro crearMiembro(Escuela escuela) {
     Miembro miembro = new Miembro();
     miembro.setEscuela(escuela);
-    miembro.setDni(dni);
     miembro.setNombre("Nombre de Prueba");
     miembro.setApellido("Apellido de Prueba");
     miembro.setEmail("miembro@prueba.com");
@@ -67,19 +65,16 @@ public class RepositorioMiembrosTest {
   @Test
   public void testGuardarMiembro() {
 
-    String dni = "12345678";
-
     Escuela escuelaGuardada = crearEscuela("12123456781");
-    Miembro miembroGuardado = crearMiembro(escuelaGuardada, dni);
+    Miembro miembroGuardado = crearMiembro(escuelaGuardada);
     assertNotNull(miembroGuardado.getId());
     assertNotEquals(0L, miembroGuardado.getId());
-    assertEquals(dni, miembroGuardado.getDni());
   }
 
   @Test
   public void testActualizarMiembro() {
     Escuela escuelaGuardada = crearEscuela("12123456781");
-    Miembro miembro = crearMiembro(escuelaGuardada, "12345678");
+    Miembro miembro = crearMiembro(escuelaGuardada);
     miembro.setNombre("Nombre actualizado");
     Miembro miembroActualizado = repositorioMiembros.save(miembro);
     assertEquals(miembro.getNombre(), miembroActualizado.getNombre());
@@ -88,7 +83,7 @@ public class RepositorioMiembrosTest {
   @Test
   public void testBorrarMiembro() {
     Escuela escuelaGuardada = crearEscuela("12123456781");
-    Miembro miembroGuardado = crearMiembro(escuelaGuardada, "12345678");
+    Miembro miembroGuardado = crearMiembro(escuelaGuardada);
     repositorioMiembros.deleteById(miembroGuardado.getId());
     Optional<Miembro> miembroEncontrado = repositorioMiembros.findById(miembroGuardado.getId());
     assertFalse(miembroEncontrado.isPresent());
@@ -97,8 +92,8 @@ public class RepositorioMiembrosTest {
   @Test
   public void testEncontrarTodosLosMiembros() {
     Escuela escuelaGuardada = crearEscuela("12123456781");
-    crearMiembroVoid(escuelaGuardada, "12345678");
-    crearMiembroVoid(escuelaGuardada, "123456789");
+    crearMiembroVoid(escuelaGuardada);
+    crearMiembroVoid(escuelaGuardada);
     List<Miembro> miembros = repositorioMiembros.findAll();
     assertEquals(2, miembros.size());
   }
@@ -106,24 +101,15 @@ public class RepositorioMiembrosTest {
   @Test
   public void testEncontrarTodosLosMiembrosDeUnaEscuela() {
     Escuela escuelaGuardada = crearEscuela("12123456781");
-    crearMiembroVoid(escuelaGuardada, "12345678");
+    crearMiembroVoid(escuelaGuardada);
     List<Miembro> miembros = repositorioMiembros.findByEscuelaId(escuelaGuardada.getId());
     assertEquals(1, miembros.size());
   }
 
   @Test
-  public void testEncontrarMiembroPorDni() {
-    Escuela escuelaGuardada = crearEscuela("12123456781");
-    Miembro miembro = crearMiembro(escuelaGuardada, "12345678");
-    Optional<Miembro> miembroEncontrado = repositorioMiembros.findByDni(miembro.getDni());
-    assertTrue(miembroEncontrado.isPresent());
-    assertEquals(miembro.getDni(), miembroEncontrado.get().getDni());
-  }
-
-  @Test
   public void testEncontrarMiembroPorEmail() {
     Escuela escuelaGuardada = crearEscuela("12123456781");
-    Miembro miembro = crearMiembro(escuelaGuardada, "12345678");
+    Miembro miembro = crearMiembro(escuelaGuardada);
     Optional<Miembro> miembroEncontrado = repositorioMiembros.findByEmail(miembro.getEmail());
     assertTrue(miembroEncontrado.isPresent());
     assertEquals(miembro.getEmail(), miembroEncontrado.get().getEmail());

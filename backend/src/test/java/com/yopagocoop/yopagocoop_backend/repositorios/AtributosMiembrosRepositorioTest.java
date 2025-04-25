@@ -46,7 +46,6 @@ public class AtributosMiembrosRepositorioTest {
 
     Miembro miembro = new Miembro();
     miembro.setEscuela(escuelaGuardada);
-    miembro.setDni("12345678");
     miembro.setNombre("Nombre de Prueba");
     miembro.setApellido("Apellido de Prueba");
     miembro.setEmail("email@prueba.com");

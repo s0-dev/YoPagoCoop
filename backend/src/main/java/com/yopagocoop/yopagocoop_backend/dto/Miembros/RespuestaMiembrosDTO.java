@@ -10,7 +10,6 @@ public class RespuestaMiembrosDTO {
     private Long id;
     private Long escuelaId;
     private String escuelaNombre;
-    private String dni;
     private String nombre;
     private String apellido;
     private String email;

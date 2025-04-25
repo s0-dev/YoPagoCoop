@@ -58,7 +58,6 @@ public class ServicioAtributosMiembrosImplTest {
     miembro.setEscuela(escuela);
     miembro.setNombre(nombre);
     miembro.setApellido(apellido);
-    miembro.setDni("12345678");
     miembro.setEmail(nombre.toLowerCase() + "@example.com");
     miembro.setCelular("123456789");
     return miembro;

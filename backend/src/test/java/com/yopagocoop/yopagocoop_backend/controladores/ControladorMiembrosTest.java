@@ -68,7 +68,6 @@ public class ControladorMiembrosTest {
     // Setup creation DTO
     creacionDTO = new CreacionMiembrosDTO();
     creacionDTO.setEscuelaId(1L);
-    creacionDTO.setDni("12345678");
     creacionDTO.setNombre("Juan");
     creacionDTO.setApellido("Pérez");
     creacionDTO.setEmail("juan.perez@example.com");
@@ -86,7 +85,6 @@ public class ControladorMiembrosTest {
     respuestaDTO.setId(1L);
     respuestaDTO.setEscuelaId(1L);
     respuestaDTO.setEscuelaNombre("Escuela Test");
-    respuestaDTO.setDni("12345678");
     respuestaDTO.setNombre("Juan");
     respuestaDTO.setApellido("Pérez");
     respuestaDTO.setEmail("juan.perez@example.com");
@@ -107,7 +105,6 @@ public class ControladorMiembrosTest {
         .andDo(print())
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.id").value(1))
-        .andExpect(jsonPath("$.dni").value("12345678"))
         .andExpect(jsonPath("$.nombre").value("Juan"))
         .andExpect(jsonPath("$.apellido").value("Pérez"))
         .andExpect(jsonPath("$.atributos.Grado").value("3"))
@@ -124,7 +121,6 @@ public class ControladorMiembrosTest {
         .andDo(print())
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.id").value(1))
-        .andExpect(jsonPath("$.dni").value("12345678"))
         .andExpect(jsonPath("$.nombre").value("Juan"));
   }
 
@@ -135,7 +131,6 @@ public class ControladorMiembrosTest {
     miembro2.setId(2L);
     miembro2.setEscuelaId(1L);
     miembro2.setEscuelaNombre("Escuela Test");
-    miembro2.setDni("87654321");
     miembro2.setNombre("Ana");
     miembro2.setApellido("Gómez");
     miembro2.setEmail("ana.gomez@example.com");

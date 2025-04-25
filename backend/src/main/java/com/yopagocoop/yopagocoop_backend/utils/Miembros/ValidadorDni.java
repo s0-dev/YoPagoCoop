@@ -1,3 +1,5 @@
+// ARCHIVADO
+
 package com.yopagocoop.yopagocoop_backend.utils.Miembros;
 
 public class ValidadorDni {

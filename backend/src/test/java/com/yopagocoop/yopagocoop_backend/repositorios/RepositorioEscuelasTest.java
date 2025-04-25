@@ -183,14 +183,12 @@ public class RepositorioEscuelasTest {
     atributosEscuelas2.setEsRequerido(true);
 
     Miembro miembro = new Miembro();
-    miembro.setDni("12345678");
     miembro.setNombre("Nombre de Prueba");
     miembro.setApellido("Apellido de Prueba");
     miembro.setEmail("email@prueba.com");
     miembro.setCelular("1234567890");
 
     Miembro miembro2 = new Miembro();
-    miembro2.setDni("123456789");
     miembro2.setNombre("Nombre de Prueba 2");
     miembro2.setApellido("Apellido de Prueba 2");
     miembro2.setEmail("email2@prueba.com");

@@ -174,7 +174,6 @@ public class ServicioMiembrosImpl implements ServicioMiembros {
   private void actualizarDatosMiembro(Miembro miembro, CreacionMiembrosDTO miembroDTO) {
     miembro.setNombre(miembroDTO.getNombre());
     miembro.setApellido(miembroDTO.getApellido());
-    miembro.setDni(miembroDTO.getDni());
     miembro.setEmail(miembroDTO.getEmail());
     miembro.setCelular(miembroDTO.getCelular());
   }

@@ -7,7 +7,6 @@ import lombok.Data;
 public class CreacionMiembrosDTO {
 
     private Long escuelaId;
-    private String dni;
     private String nombre;
     private String apellido;
     private String email;

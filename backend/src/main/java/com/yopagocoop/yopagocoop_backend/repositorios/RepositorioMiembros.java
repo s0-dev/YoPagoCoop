@@ -8,7 +8,5 @@ import com.yopagocoop.yopagocoop_backend.modelos.Miembro;
 public interface RepositorioMiembros extends JpaRepository<Miembro, Long> {
   List<Miembro> findByEscuelaId(Long escuelaId);
 
-  Optional<Miembro> findByDni(String dni);
-
   Optional<Miembro> findByEmail(String email);
 }
