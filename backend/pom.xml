@@ -6,7 +6,8 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.5</version>
-        <relativePath/> </parent>
+        <relativePath/> 
+    </parent>
     <groupId>com.yopagocoop</groupId>
     <artifactId>yopagocoop-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
