@@ -1,47 +1,53 @@
 package com.yopagocoop.yopagocoop_backend.config;
 
-import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
-@Configuration
-@ConfigurationProperties("jwt")
-@Data
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+
+@Component
+@ConfigurationProperties(prefix = "jwt")
+@Validated
 public class JwtConfig {
-    private String jwtSecret;
-    private long jwtExpirationMs;
-    private String jwtIssuer;
+    @NotBlank
+    private String secret;
+    @Positive
+    private long expirationMs;
+    @NotBlank
+    private String issuer;
 
-    public JwtConfig(String jwtSecret, long jwtExpirationMs, String jwtIssuer) {
-        this.jwtSecret = jwtSecret;
-        this.jwtExpirationMs = jwtExpirationMs;
-        this.jwtIssuer = jwtIssuer;
+    public JwtConfig(String secret, long expirationMs, String issuer) {
+        this.secret = secret;
+        this.expirationMs = expirationMs;
+        this.issuer = issuer;
     }
 
     public JwtConfig() {
     }
 
-    public String getJwtSecret() {
-        return jwtSecret;
+    public String getSecret() {
+        return secret;
     }
 
-    public void setJwtSecret(String jwtSecret) {
-        this.jwtSecret = jwtSecret;
+    public void setSecret(String secret) {
+        this.secret = secret;
     }
 
-    public long getJwtExpirationMs() {
-        return jwtExpirationMs;
+    public long getExpirationMs() {
+        return expirationMs;
     }
 
-    public void setJwtExpirationMs(long jwtExpirationMs) {
-        this.jwtExpirationMs = jwtExpirationMs;
+    public void setExpirationMs(long expirationMs) {
+        this.expirationMs = expirationMs;
     }
 
-    public String getJwtIssuer() {
-        return jwtIssuer;
+    public String getIssuer() {
+        return issuer;
     }
 
-    public void setJwtIssuer(String jwtIssuer) {
-        this.jwtIssuer = jwtIssuer;
+    public void setIssuer(String issuer) {
+        this.issuer = issuer;
     }
 }

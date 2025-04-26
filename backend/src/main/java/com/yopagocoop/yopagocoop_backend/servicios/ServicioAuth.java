@@ -1,11 +1,12 @@
 package com.yopagocoop.yopagocoop_backend.servicios;
 
-import com.yopagocoop.yopagocoop_backend.dto.Auth.RespuestaLoginDTO;
-import com.yopagocoop.yopagocoop_backend.dto.Auth.RespuestaRegistroDTO;
+import com.yopagocoop.yopagocoop_backend.dto.Auth.login.PeticionLoginDTO;
+import com.yopagocoop.yopagocoop_backend.dto.Auth.login.RespuestaLoginDTO;
+import com.yopagocoop.yopagocoop_backend.dto.Auth.registro.RespuestaRegistroDTO;
+import com.yopagocoop.yopagocoop_backend.dto.Miembros.CreacionMiembrosDTO;
 
 public interface ServicioAuth {
+    RespuestaRegistroDTO registro(CreacionMiembrosDTO creacionMiembros);
 
-    RespuestaRegistroDTO registro(String nombre, String apellido, String email, String password);
-
-    RespuestaLoginDTO login(String email, String password);
+    RespuestaLoginDTO login(PeticionLoginDTO peticionLogin);
 }

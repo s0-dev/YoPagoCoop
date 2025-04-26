@@ -9,6 +9,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
+import java.util.Base64;
 import java.util.Date;
 
 @Component
@@ -19,18 +20,19 @@ public class JwtUtils {
 
     public JwtUtils(JwtConfig jwtConfig) {
         this.jwtConfig = jwtConfig;
-        this.key = Keys.hmacShaKeyFor(jwtConfig.getJwtSecret().getBytes());
+
+        this.key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtConfig.getSecret()));
     }
 
     public String generateToken(String email) {
         Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + jwtConfig.getJwtExpirationMs());
+        Date expiryDate = new Date(now.getTime() + jwtConfig.getExpirationMs());
 
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .setIssuer(jwtConfig.getJwtIssuer())
+                .setIssuer(jwtConfig.getIssuer())
                 .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
     }

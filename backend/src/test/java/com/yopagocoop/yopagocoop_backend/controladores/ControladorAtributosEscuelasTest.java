@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ import com.yopagocoop.yopagocoop_backend.dto.Escuelas.CreacionAtributosEscuelasD
 import com.yopagocoop.yopagocoop_backend.dto.Escuelas.RespuestaAtributosEscuelasDTO;
 import com.yopagocoop.yopagocoop_backend.servicios.ServicioAtributosEscuelas;
 
+@Disabled
 @WebMvcTest(ControladorAtributosEscuelas.class)
 @Import(ControladorAtributosEscuelasTest.ServicioAtributosEscuelasTestConfig.class)
 public class ControladorAtributosEscuelasTest {

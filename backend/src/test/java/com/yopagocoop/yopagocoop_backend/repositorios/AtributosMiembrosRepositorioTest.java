@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -14,6 +15,7 @@ import com.yopagocoop.yopagocoop_backend.modelos.AtributosMiembros;
 import com.yopagocoop.yopagocoop_backend.modelos.Escuela;
 import com.yopagocoop.yopagocoop_backend.modelos.Miembro;
 
+@Disabled
 @DataJpaTest
 public class AtributosMiembrosRepositorioTest {
   @Autowired

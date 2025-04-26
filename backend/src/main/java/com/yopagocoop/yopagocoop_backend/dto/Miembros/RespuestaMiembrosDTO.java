@@ -13,6 +13,7 @@ public class RespuestaMiembrosDTO {
     private String nombre;
     private String apellido;
     private String email;
+    private String contraseña;
     private String celular;
     private LocalDateTime fechaCreacion;
     private Map<String, String> atributos;

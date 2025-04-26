@@ -32,10 +32,8 @@ public class Miembro {
     @Column(nullable = false)
     private String email;
 
-    // TODO: MIEMBRO
-    // agregar password en la tabla 003
     @Column(nullable = false)
-    private String password;
+    private String contraseña;
 
     @Column(nullable = false, length = 20)
     private String celular;

@@ -1,12 +1,14 @@
-package com.yopagocoop.yopagocoop_backend.dto.Auth;
+package com.yopagocoop.yopagocoop_backend.dto.Auth.login;
 
-public class RespuestaRegistroDTO {
+public class RespuestaLoginDTO {
+    private String token;
     private boolean status;
     private String message;
 
-    public RespuestaRegistroDTO(boolean status, String message) {
+    public RespuestaLoginDTO(boolean status, String message, String token) {
         this.status = status;
         this.message = message;
+        this.token = token;
     }
 
     public boolean isStatus() {
@@ -23,5 +25,13 @@ public class RespuestaRegistroDTO {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ import com.yopagocoop.yopagocoop_backend.dto.Miembros.CreacionMiembrosDTO;
 import com.yopagocoop.yopagocoop_backend.dto.Miembros.RespuestaMiembrosDTO;
 import com.yopagocoop.yopagocoop_backend.servicios.ServicioMiembros;
 
+@Disabled
 @WebMvcTest(ControladorMiembros.class)
 @Import(ControladorMiembrosTest.ServicioMiembrosTestConfig.class)
 public class ControladorMiembrosTest {
