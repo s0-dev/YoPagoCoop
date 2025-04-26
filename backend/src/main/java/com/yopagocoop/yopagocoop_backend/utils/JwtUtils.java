@@ -1,11 +1,11 @@
 package com.yopagocoop.yopagocoop_backend.utils;
 
 import com.yopagocoop.yopagocoop_backend.config.JwtConfig;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -17,7 +17,6 @@ public class JwtUtils {
     private final JwtConfig jwtConfig;
     private Key key;
 
-    @Autowired
     public JwtUtils(JwtConfig jwtConfig) {
         this.jwtConfig = jwtConfig;
         this.key = Keys.hmacShaKeyFor(jwtConfig.getJwtSecret().getBytes());
@@ -47,5 +46,10 @@ public class JwtUtils {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public String getEmailFromToken(String token) {
+        Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
+        return claims.getSubject();
     }
 }

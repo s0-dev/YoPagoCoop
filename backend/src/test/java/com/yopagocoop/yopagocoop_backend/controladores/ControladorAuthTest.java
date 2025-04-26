@@ -24,9 +24,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@SpringBootTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
+@AutoConfigureMockMvc
 public class ControladorAuthTest {
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -36,7 +40,7 @@ public class ControladorAuthTest {
     @Autowired
     private RepositorioMiembros repositorioMiembros;
 
-
+    @Test
     public void registroExitoso() throws Exception {
         Map<String, String> datos = new HashMap<>();
         datos.put("nombre", "TestNombre");
@@ -45,24 +49,24 @@ public class ControladorAuthTest {
         datos.put("password", "TestPassword");
 
         String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/registro")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(datos)))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(datos)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
         RespuestaRegistroDTO respuesta = objectMapper.readValue(jsonResponse, RespuestaRegistroDTO.class);
 
-
         assertTrue(respuesta.isStatus());
         assertEquals("Registro exitoso", respuesta.getMessage());
     }
 
+    @Test
     public void registroFallidoEmailExistente() throws Exception {
         registroExitoso();
-       Map<String, String> datos2 = new HashMap<>();
+        Map<String, String> datos2 = new HashMap<>();
         datos2.put("nombre", "TestNombre2");
-       datos2.put("apellido", "TestApellido2");
-       datos2.put("email", "test@example.com");
+        datos2.put("apellido", "TestApellido2");
+        datos2.put("email", "test@example.com");
         datos2.put("password", "TestPassword2");
 
         String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/registro")
@@ -74,6 +78,7 @@ public class ControladorAuthTest {
         assertFalse(respuesta.isStatus());
         assertEquals("El email ya esta registrado", respuesta.getMessage());
     }
+
     @Test
     public void loginExitoso() throws Exception {
         registroExitoso();
@@ -81,8 +86,8 @@ public class ControladorAuthTest {
         datos.put("email", "test@example.com");
         datos.put("password", "TestPassword");
         String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/login")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(datos)))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(datos)))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn().getResponse()
                 .getContentAsString();
         RespuestaLoginDTO respuesta = objectMapper.readValue(jsonResponse, RespuestaLoginDTO.class);
@@ -94,7 +99,7 @@ public class ControladorAuthTest {
     @Test
     public void loginFallidoUsuarioNoEncontrado() throws Exception {
 
-         Map<String, String> datos = new HashMap<>();
+        Map<String, String> datos = new HashMap<>();
         datos.put("email", "noexiste@example.com");
         datos.put("password", "TestPassword");
 
@@ -115,10 +120,15 @@ public class ControladorAuthTest {
         datos.put("nombre", null);
         datos.put("apellido", "TestApellido3");
         datos.put("email", "test3@example.com");
-        datos.put("password", "TestPassword3");String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/registro").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(datos))).andExpect(MockMvcResultMatchers.status().isOk()).andReturn().getResponse().getContentAsString();
-        RespuestaRegistroDTO respuesta = objectMapper.readValue(jsonResponse,RespuestaRegistroDTO.class);
+        datos.put("password", "TestPassword3");
+        String jsonResponse = mockMvc
+                .perform(MockMvcRequestBuilders.post("/api/auth/registro").contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(datos)))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andReturn().getResponse().getContentAsString();
+        RespuestaRegistroDTO respuesta = objectMapper.readValue(jsonResponse, RespuestaRegistroDTO.class);
         assertFalse(respuesta.isStatus());
-        assertEquals("Todos los campos son requeridos", respuesta.getMessage());}
+        assertEquals("Todos los campos son requeridos", respuesta.getMessage());
+    }
 
     @Test
     public void loginFallidoContrasenaIncorrecta() throws Exception {
@@ -126,7 +136,10 @@ public class ControladorAuthTest {
         Map<String, String> datos = new HashMap<>();
         datos.put("email", "test@example.com");
         datos.put("password", "ContraseñaIncorrecta");
-        String jsonResponse = mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/login").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(datos))).andExpect(MockMvcResultMatchers.status().isOk()).andReturn().getResponse().getContentAsString();
+        String jsonResponse = mockMvc
+                .perform(MockMvcRequestBuilders.post("/api/auth/login").contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(datos)))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andReturn().getResponse().getContentAsString();
         RespuestaLoginDTO respuesta = objectMapper.readValue(jsonResponse, RespuestaLoginDTO.class);
         assertFalse(respuesta.isStatus());
         assertEquals("Contraseña incorrecta", respuesta.getMessage());
@@ -135,12 +148,12 @@ public class ControladorAuthTest {
     @Test
     public void loginFallidoCamposNulos() throws Exception {
         Map<String, String> datosLogin = new HashMap<>();
-         datosLogin.put("email", null);
+        datosLogin.put("email", null);
         datosLogin.put("password", "wrongpassword");
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/login")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(datosLogin)))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(datosLogin)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
 
@@ -156,7 +169,6 @@ public class ControladorAuthTest {
         registroExitoso();
 
         Miembro miembro = repositorioMiembros.findByEmail("test@example.com").get();
-        miembro.setActivo(false);
         repositorioMiembros.save(miembro);
 
         Map<String, String> datosLogin = new HashMap<>();
@@ -164,8 +176,8 @@ public class ControladorAuthTest {
         datosLogin.put("password", "TestPassword");
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/login")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(datosLogin)))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(datosLogin)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
 

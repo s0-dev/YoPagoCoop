@@ -21,7 +21,7 @@ public class ServicioAuthImpl implements ServicioAuth {
     @Override
     public RespuestaRegistroDTO registro(String nombre, String apellido, String email, String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        RespuestaRegistroDTO respuesta = new RespuestaRegistroDTO();
+        RespuestaRegistroDTO respuesta = new RespuestaRegistroDTO(false, password);
 
         if (repositorioMiembros.findByEmail(email).isPresent()) {
             respuesta.setStatus(false);
@@ -34,7 +34,6 @@ public class ServicioAuthImpl implements ServicioAuth {
         miembro.setApellido(apellido);
         miembro.setEmail(email);
         miembro.setPassword(passwordEncoder.encode(password));
-        miembro.setActivo(true);
         repositorioMiembros.save(miembro);
         respuesta.setStatus(true);
         respuesta.setMessage("Registro exitoso");
@@ -44,7 +43,7 @@ public class ServicioAuthImpl implements ServicioAuth {
     @Override
     public RespuestaLoginDTO login(String email, String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        RespuestaLoginDTO respuesta = new RespuestaLoginDTO();
+        RespuestaLoginDTO respuesta = new RespuestaLoginDTO(false, password, password);
 
         Miembro miembro = repositorioMiembros.findByEmail(email).orElse(null);
         if (miembro == null) {
@@ -55,11 +54,6 @@ public class ServicioAuthImpl implements ServicioAuth {
         if (!passwordEncoder.matches(password, miembro.getPassword())) {
             respuesta.setStatus(false);
             respuesta.setMessage("Contraseña incorrecta");
-            return respuesta;
-        }
-        if (!miembro.isActivo()) {
-            respuesta.setStatus(false);
-            respuesta.setMessage("Usuario inactivo");
             return respuesta;
         }
         String token = jwtUtils.generateToken(email);
