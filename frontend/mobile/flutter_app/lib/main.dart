@@ -6,6 +6,7 @@ import 'screens/auth/register_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/payments/payment_screen.dart';
 import 'screens/payments/information_screen.dart';
+import 'screens/payments/pay/pay_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -28,6 +29,7 @@ class MainApp extends StatelessWidget {
         'register': (context) => const RegisterScreen(),
         'payment': (context) => const PaymentScreen(),
         'information': (context) => InfoPaymentsScreen(),
+        'pay': (context) => PayScreen(),
         'home': (context) {
           final nombre = ModalRoute.of(context)!.settings.arguments as String;
           return HomeScreen(username: nombre);

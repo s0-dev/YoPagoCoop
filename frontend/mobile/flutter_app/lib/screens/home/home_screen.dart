@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
     const Color backgroundColor = Color(0xFFEEEEEE);
     const Color textColor = Color(0xFF0B0B0B);
     const Color drawerColor = Color.fromARGB(255, 225, 225, 225);
-    const Color progressColor = Color.fromARGB(255, 210, 197, 126);
+    const Color progressColor = Color.fromARGB(255, 206, 191, 106);
     const Color primaryButton = Color(0xFFCEAE00);
     const Color buttonColorSecundary = Color(0xFF3D749C);
     const double progress = 0.2;
@@ -96,11 +96,14 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 10),
-                    LinearProgressIndicator(
-                      value: progress,
-                      minHeight: 10,
-                      backgroundColor: Colors.grey[700],
-                      color: progressColor,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: LinearProgressIndicator(
+                        value: progress,
+                        minHeight: 13,
+                        backgroundColor: Colors.grey[350],
+                        color: progressColor,
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Row(

@@ -5,14 +5,15 @@ class PaymentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color backgroundColor = Color(0xFFEEEEEE);
     const Color colorYellow = Color(0xFFCEAE00);
     const Color textColor = Color(0xFF0B0B0B);
-    const Color textColorSecundary = Color(0xFFEEEEEE);
-    
+    const Color primaryButton = Color(0xFFCEAE00);
+    const Color progressColor = Color.fromARGB(255, 206, 191, 106);
+    const double progress = 0.85; // ejemplo de progreso: 85%
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Realizar Pago'),
+        title: const Text('Pagos'),
         backgroundColor: colorYellow,
       ),
       body: Padding(
@@ -20,82 +21,182 @@ class PaymentScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 20),
-            Text(
-              '\$2000',
-              style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
+            Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              elevation: 3,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Row(
+                      children: [
+                        SizedBox(width: 6),
+                        Text(
+                          'Resumen de Pagos',
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: textColor),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Estado actual de tus pagos y cuotas',
+                      style: TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Total pagado este año',
+                      style: TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                    const Text(
+                      '\$16,000',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                    ),
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Pagos pendientes',
+                      style: TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                    const Text(
+                      '\$2,000',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Color.fromARGB(255, 232, 77, 66)),
+                    ),
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Próximo vencimiento',
+                      style: TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                    const Text(
+                      '10 de Julio, 2024',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                    ),
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Progreso anual pagado',
+                      style: TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: LinearProgressIndicator(
+                              value: progress,
+                              minHeight: 13,
+                              backgroundColor: Colors.grey[350],
+                              color: progressColor,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          '${(progress * 100).toStringAsFixed(0)}%',
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: textColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(height: 10),
-            const Text(
-              'Fecha de vencimiento: 01/03/25',
-              style: TextStyle(fontSize: 18, color: Colors.grey),
-            ),
-            const SizedBox(height: 30),
-            const Text(
-              'Selecciona método de pago:',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
             const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                PaymentMethodButton(icon: Icons.credit_card, label: 'Tarjeta'),
-                PaymentMethodButton(icon: Icons.account_balance, label: 'Transferencia'),
-                PaymentMethodButton(icon: Icons.money, label: 'Efectivo'),
-              ],
-            ),
-            const SizedBox(height: 10),
-            TextField(
-                    style: const TextStyle(color: Colors.white54),
-                    decoration: InputDecoration(
-                      labelText: 'Ingrese la cantidad a pagar',
-                      labelStyle: const TextStyle(color: textColorSecundary),
-                      hintText: 'Mínimo \$2000 pesos',
-                      hintStyle: const TextStyle(color: Color.fromARGB(133, 200, 184, 184)),
-                      filled: true,
-                      fillColor: Color.fromARGB(255, 28, 29, 28),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: backgroundColor),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: backgroundColor,
-                          width: 2,
+            Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              elevation: 3,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Text(
+                          'Cuota mensual - Julio',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Color(0xFF0B0B0B),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        const Spacer(),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: Colors.blue[100],
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Text(
+                            'Pendiente',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    const Text(
+                      'Cuota mensual correspondiente al mes de Julio 2023',
+                      style: TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: const [
+                        Text(
+                          'Monto:',
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        SizedBox(width: 231),
+                        Text(
+                          '\$2,000',
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: const [
+                        Text(
+                          'Vencimiento:',
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        SizedBox(width: 85),
+                        Icon(Icons.calendar_today, size: 16, color: Colors.grey),
+                        SizedBox(width: 5),
+                        Text(
+                          '10 de Julio, 2023',
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'pay');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: primaryButton,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: const Text(
+                          'Pagar ahora',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
-                  ),
-            Image.asset(
-              'lib/assets/images/payments.png',
-              width: 250,
-              height: 250,
-            ),
-            const Spacer(),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: colorYellow,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: () {
-                  // Aquí pones la lógica para realizar el pago
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Pago realizado con éxito!')),
-                  );
-                },
-                child: const Text(
-                  'Pagar ahora',
-                  style: TextStyle(fontSize: 20, color: textColor),
+                  ],
                 ),
               ),
             ),
