@@ -50,10 +50,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const Color backgroundColor = Color.fromARGB(255, 0, 0, 0);
+    const Color backgroundColor = Color(0xFFEEEEEE);
+    const Color textColor = Color(0xFF0B0B0B);
+    const Color textColorSecundary = Color(0xFFEEEEEE);
     const Color buttonColor = Color(0xFF432861);
     const Color primaryPurple = Color(0xFF432861);
-    const Color textColor = Color(0xFFEEEEEE);
+    const Color inputColor = Color.fromARGB(255, 123, 122, 122);
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -61,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         backgroundColor: backgroundColor,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: textColor),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -89,27 +91,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: textColor,
                         ),
                       ),
                       const SizedBox(height: 8),
                       const Text(
                         'Crea una cuenta para comenzar en\nYoPagoCoop',
-                        style: TextStyle(fontSize: 16, color: Colors.white70),
+                        style: TextStyle(fontSize: 16, color: textColor),
                       ),
                       const SizedBox(height: 32),
 
                       TextFormField(
                         controller: _nombreController,
-                        style: const TextStyle(color: textColor),
+                        style: const TextStyle(color: textColorSecundary),
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
                           labelText: 'Nombre',
-                          labelStyle: const TextStyle(color: textColor),
+                          labelStyle: const TextStyle(color: textColorSecundary),
                           hintText: 'tu nombre',
                           hintStyle: const TextStyle(color: Colors.white54),
                           filled: true,
-                          fillColor: Color.fromARGB(255, 28, 29, 28),
+                          fillColor: inputColor,
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(color: backgroundColor),
                             borderRadius: BorderRadius.circular(8),
@@ -129,15 +131,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       // Email
                       TextFormField(
                         controller: _emailController,
-                        style: const TextStyle(color: textColor),
+                        style: const TextStyle(color: textColorSecundary),
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: 'Email',
-                          labelStyle: const TextStyle(color: textColor),
+                          labelStyle: const TextStyle(color: textColorSecundary),
                           hintText: 'tu@email.com',
                           hintStyle: const TextStyle(color: Colors.white54),
                           filled: true,
-                          fillColor: Color.fromARGB(255, 28, 29, 28),
+                          fillColor: inputColor,
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(color: backgroundColor),
                             borderRadius: BorderRadius.circular(8),
@@ -165,15 +167,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       // Password
                       TextFormField(
                         controller: _passwordController,
-                        style: const TextStyle(color: textColor),
+                        style: const TextStyle(color: textColorSecundary),
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                           labelText: 'Contraseña',
-                          labelStyle: const TextStyle(color: textColor),
+                          labelStyle: const TextStyle(color: textColorSecundary),
                           hintText: 'Mínimo 8 caracteres',
                           hintStyle: const TextStyle(color: Colors.white54),
                           filled: true,
-                          fillColor: Color.fromARGB(255, 28, 29, 28),
+                          fillColor: inputColor,
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureText
@@ -214,15 +216,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       // Confirm Password
                       TextFormField(
                         controller: _confirmPasswordController,
-                        style: const TextStyle(color: textColor),
+                        style: const TextStyle(color: textColorSecundary),
                         obscureText: _obscureConfirmText,
                         decoration: InputDecoration(
                           labelText: 'Confirmar contraseña',
-                          labelStyle: const TextStyle(color: textColor),
+                          labelStyle: const TextStyle(color: textColorSecundary),
                           hintText: 'Repite tu contraseña',
                           hintStyle: const TextStyle(color: Colors.white54),
                           filled: true,
-                          fillColor: Color.fromARGB(255, 28, 29, 28),
+                          fillColor: inputColor,
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureConfirmText
@@ -283,7 +285,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       onPressed: _submitForm,
                       child: const Text(
                         'Registrarse',
-                        style: TextStyle(fontSize: 16, color: textColor),
+                        style: TextStyle(fontSize: 16, color: textColorSecundary),
                       ),
                     ),
                   ),
@@ -293,7 +295,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     children: [
                       const Text(
                         'Ya tienes una cuenta? ',
-                        style: TextStyle(color: Colors.white70),
+                        style: TextStyle(color: textColor),
                       ),
                       GestureDetector(
                         onTap: () {

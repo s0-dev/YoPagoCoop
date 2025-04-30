@@ -6,11 +6,12 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // First, define colors from your Figma design
-    const Color backgroundColor = Color.fromARGB(255, 0, 0, 0);
+    const Color backgroundColor = Color(0xFFEEEEEE);
+    const Color textColor = Color(0xFF0B0B0B);
     const Color primaryPurple = Color(0xFF9C88FF);
     const Color buttonColor = Color(0xFF432861);
-    const Color textColor = Color(0xFFEEEEEE);
-    const Color textColorSecundary = Color(0xFFCEAE00);
+    const Color textColorYellow = Color(0xFFCEAE00);
+    const Color textColorSecundary = Color(0xFFEEEEEE);
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
@@ -72,7 +73,7 @@ class SplashScreen extends StatelessWidget {
                           fontSize: 36, 
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.w700,
-                          color: textColorSecundary
+                          color: textColorYellow
                         ),
                       ),
                     ],
@@ -112,7 +113,7 @@ class SplashScreen extends StatelessWidget {
                           SizedBox(width: 8), // Espacio entre icono y texto
                           const Text(
                             'Sumate',
-                            style: TextStyle(fontSize: 16, color: textColor),
+                            style: TextStyle(fontSize: 16, color: textColorSecundary),
                           ),
                         ],
                       ),
@@ -124,11 +125,11 @@ class SplashScreen extends StatelessWidget {
 
                   // "No tienes cuenta? Regístrate"
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Text(
                         'No tienes una cuenta? ',
-                        style: TextStyle(color: Colors.white70),
+                        style: TextStyle(color: textColor),
                       ),
                       GestureDetector(
                         onTap: () {

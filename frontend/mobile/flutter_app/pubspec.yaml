@@ -28,6 +28,7 @@ flutter:
     - lib/assets/images/VectorSumate.png
     - lib/assets/images/secureLogin.png
     - lib/assets/images/secureRegister.png
+    - lib/assets/images/payments.png
   uses-material-design: true
 
   fonts:

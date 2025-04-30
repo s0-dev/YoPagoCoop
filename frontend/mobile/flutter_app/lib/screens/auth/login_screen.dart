@@ -22,10 +22,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const Color backgroundColor = Color.fromARGB(255, 0, 0, 0);
+    const Color backgroundColor = Color(0xFFEEEEEE);
+    const Color textColor = Color(0xFF0B0B0B);
     const Color buttonColor = Color(0xFF432861);
     const Color primaryPurple = Color(0xFF432861);
-    const Color textColor = Color(0xFFEEEEEE);
+    const Color textColorSecundary = Color(0xFFEEEEEE);
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -33,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: backgroundColor,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: textColor),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -74,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: const TextStyle(color: textColor),
                     decoration: InputDecoration(
                       labelText: 'Email',
-                      labelStyle: const TextStyle(color: textColor),
+                      labelStyle: const TextStyle(color: textColorSecundary),
                       filled: true,
                       fillColor: Color.fromARGB(255, 28, 29, 28),
                       enabledBorder: OutlineInputBorder(
@@ -99,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscureText: _obscureText,
                     decoration: InputDecoration(
                       labelText: 'Contraseña',
-                      labelStyle: const TextStyle(color: textColor),
+                      labelStyle: const TextStyle(color: textColorSecundary),
                       hintText: 'Tu contraseña',
                       hintStyle: const TextStyle(color: Colors.white54),
                       filled: true,
@@ -189,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       const Text(
                         'No tienes una cuenta?',
-                        style: TextStyle(color: Colors.white70),
+                        style: TextStyle(color: textColor),
                       ),
                       GestureDetector(
                         onTap: () {
