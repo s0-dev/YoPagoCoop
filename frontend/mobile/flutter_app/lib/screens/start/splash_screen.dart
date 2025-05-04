@@ -49,7 +49,7 @@ class SplashScreen extends StatelessWidget {
                               width: 300, // Ancho máximo deseado
                               child: Text(
                                 line,
-                                textAlign: TextAlign.start, // Alineación izquierda dentro del espacio centrado
+                                textAlign: TextAlign.center, // Alineación izquierda dentro del espacio centrado
                                 style: const TextStyle(
                                   fontSize: 32,
                                   fontFamily: 'Montserrat',

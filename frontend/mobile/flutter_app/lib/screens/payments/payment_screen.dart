@@ -155,7 +155,7 @@ class PaymentScreen extends StatelessWidget {
                             'Monto:',
                             style: TextStyle(color: Colors.grey),
                           ),
-                          SizedBox(width: 231),
+                          SizedBox(width: 8),
                           Text(
                             '\$2,000',
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -169,7 +169,7 @@ class PaymentScreen extends StatelessWidget {
                             'Vencimiento:',
                             style: TextStyle(color: Colors.grey),
                           ),
-                          SizedBox(width: 85),
+                          SizedBox(width: 8),
                           Icon(Icons.calendar_today, size: 16, color: Colors.grey),
                           SizedBox(width: 5),
                           Text(
@@ -250,7 +250,7 @@ class PaymentScreen extends StatelessWidget {
                             'Monto:',
                             style: TextStyle(color: Colors.grey),
                           ),
-                          SizedBox(width: 246),
+                          SizedBox(width: 8),
                           Text(
                             '\$500',
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -264,7 +264,7 @@ class PaymentScreen extends StatelessWidget {
                             'Vencimiento:',
                             style: TextStyle(color: Colors.grey),
                           ),
-                          SizedBox(width: 85),
+                          SizedBox(width: 8),
                           Icon(Icons.calendar_today, size: 16, color: Colors.grey),
                           SizedBox(width: 5),
                           Text(
@@ -280,7 +280,7 @@ class PaymentScreen extends StatelessWidget {
                             'Recargo:',
                             style: TextStyle(color: Colors.grey),
                           ),
-                          SizedBox(width: 245),
+                          SizedBox(width: 8),
                           Text(
                             '\$50',
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16,  color: Colors.red,),

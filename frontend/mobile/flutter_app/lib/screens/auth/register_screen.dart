@@ -103,25 +103,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                       TextFormField(
                         controller: _nombreController,
-                        style: const TextStyle(color: textColorSecundary),
+                        style: const TextStyle(color: textColor),
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
                           labelText: 'Nombre',
-                          labelStyle: const TextStyle(color: textColorSecundary),
+                          labelStyle: const TextStyle(color: textColor),
                           hintText: 'tu nombre',
-                          hintStyle: const TextStyle(color: Colors.white54),
+                          hintStyle: const TextStyle(color: textColor),
                           filled: true,
-                          fillColor: inputColor,
+                          fillColor: backgroundColor,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: backgroundColor),
-                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(color: textColor),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: backgroundColor,
+                              color: textColor,
                               width: 2,
                             ),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                         
@@ -131,25 +131,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       // Email
                       TextFormField(
                         controller: _emailController,
-                        style: const TextStyle(color: textColorSecundary),
+                        style: const TextStyle(color: textColor),
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: 'Email',
-                          labelStyle: const TextStyle(color: textColorSecundary),
+                          labelStyle: const TextStyle(color: textColor),
                           hintText: 'tu@email.com',
-                          hintStyle: const TextStyle(color: Colors.white54),
+                          hintStyle: const TextStyle(color: textColor),
                           filled: true,
-                          fillColor: inputColor,
+                          fillColor: backgroundColor,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: backgroundColor),
-                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(color: textColor),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: backgroundColor,
+                              color: textColor,
                               width: 2,
                             ),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                         validator: (value) {
@@ -167,21 +167,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       // Password
                       TextFormField(
                         controller: _passwordController,
-                        style: const TextStyle(color: textColorSecundary),
+                        style: const TextStyle(color: textColor),
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                           labelText: 'Contraseña',
-                          labelStyle: const TextStyle(color: textColorSecundary),
+                          labelStyle: const TextStyle(color: textColor),
                           hintText: 'Mínimo 8 caracteres',
-                          hintStyle: const TextStyle(color: Colors.white54),
+                          hintStyle: const TextStyle(color: textColor),
                           filled: true,
-                          fillColor: inputColor,
+                          fillColor: backgroundColor,
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureText
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: backgroundColor,
+                              color: inputColor,
                             ),
                             onPressed: () {
                               setState(() {
@@ -190,15 +190,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             },
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: backgroundColor),
-                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(color: textColor),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: backgroundColor,
+                              color: textColor,
                               width: 2,
                             ),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                         validator: (value) {
@@ -216,21 +216,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       // Confirm Password
                       TextFormField(
                         controller: _confirmPasswordController,
-                        style: const TextStyle(color: textColorSecundary),
+                        style: const TextStyle(color: textColor),
                         obscureText: _obscureConfirmText,
                         decoration: InputDecoration(
                           labelText: 'Confirmar contraseña',
-                          labelStyle: const TextStyle(color: textColorSecundary),
+                          labelStyle: const TextStyle(color: textColor),
                           hintText: 'Repite tu contraseña',
-                          hintStyle: const TextStyle(color: Colors.white54),
+                          hintStyle: const TextStyle(color: textColor),
                           filled: true,
-                          fillColor: inputColor,
+                          fillColor: backgroundColor,
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureConfirmText
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: backgroundColor,
+                              color: inputColor,
                             ),
                             onPressed: () {
                               setState(() {
@@ -239,15 +239,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             },
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: backgroundColor),
-                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(color: textColor),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: backgroundColor,
+                              color: textColor,
                               width: 2,
                             ),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                         validator: (value) {
