@@ -16,196 +16,308 @@ class PaymentScreen extends StatelessWidget {
         title: const Text('Pagos'),
         backgroundColor: colorYellow,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-              elevation: 3,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Row(
-                      children: [
-                        SizedBox(width: 6),
-                        Text(
-                          'Resumen de Pagos',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: textColor),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Estado actual de tus pagos y cuotas',
-                      style: TextStyle(color: Colors.grey, fontSize: 14),
-                    ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'Total pagado este año',
-                      style: TextStyle(color: Colors.grey, fontSize: 14),
-                    ),
-                    const Text(
-                      '\$16,000',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                    ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'Pagos pendientes',
-                      style: TextStyle(color: Colors.grey, fontSize: 14),
-                    ),
-                    const Text(
-                      '\$2,000',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Color.fromARGB(255, 232, 77, 66)),
-                    ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'Próximo vencimiento',
-                      style: TextStyle(color: Colors.grey, fontSize: 14),
-                    ),
-                    const Text(
-                      '10 de Julio, 2024',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                    ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'Progreso anual pagado',
-                      style: TextStyle(color: Colors.grey, fontSize: 14),
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: LinearProgressIndicator(
-                              value: progress,
-                              minHeight: 13,
-                              backgroundColor: Colors.grey[350],
-                              color: progressColor,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                elevation: 3,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Row(
+                        children: [
+                          SizedBox(width: 6),
+                          Text(
+                            'Resumen de Pagos',
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: textColor),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      const Text(
+                        'Estado actual de tus pagos y cuotas',
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Total pagado este año',
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                      const Text(
+                        '\$16,000',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                      ),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Pagos pendientes',
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                      const Text(
+                        '\$2,000',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Color.fromARGB(255, 232, 77, 66)),
+                      ),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Próximo vencimiento',
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                      const Text(
+                        '10 de Julio, 2024',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                      ),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Progreso anual pagado',
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: LinearProgressIndicator(
+                                value: progress,
+                                minHeight: 13,
+                                backgroundColor: Colors.grey[350],
+                                color: progressColor,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 10),
-                        Text(
-                          '${(progress * 100).toStringAsFixed(0)}%',
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: textColor,
+                          const SizedBox(width: 10),
+                          Text(
+                            '${(progress * 100).toStringAsFixed(0)}%',
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: textColor,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                  ],
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-              elevation: 3,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Text(
-                          'Cuota mensual - Julio',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Color(0xFF0B0B0B),
+              const SizedBox(height: 20),
+              Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                elevation: 3,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const Text(
+                            'Cuota mensual - Julio',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Color(0xFF0B0B0B),
+                            ),
                           ),
-                        ),
-                        const Spacer(),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: Colors.blue[100],
-                            borderRadius: BorderRadius.circular(20),
+                          const Spacer(),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.blue[100],
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const Text(
+                              'Pendiente',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 6),
+                      const Text(
+                        'Cuota mensual correspondiente al mes de Julio 2023',
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        children: const [
+                          Text(
+                            'Monto:',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          SizedBox(width: 231),
+                          Text(
+                            '\$2,000',
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: const [
+                          Text(
+                            'Vencimiento:',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          SizedBox(width: 85),
+                          Icon(Icons.calendar_today, size: 16, color: Colors.grey),
+                          SizedBox(width: 5),
+                          Text(
+                            '10 de Julio, 2023',
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'pay');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryButton,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                           ),
                           child: const Text(
-                            'Pendiente',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.blue,
-                            ),
+                            'Pagar ahora',
+                            style: TextStyle(color: Colors.white),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-                    const Text(
-                      'Cuota mensual correspondiente al mes de Julio 2023',
-                      style: TextStyle(color: Colors.grey, fontSize: 14),
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      children: const [
-                        Text(
-                          'Monto:',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        SizedBox(width: 231),
-                        Text(
-                          '\$2,000',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: const [
-                        Text(
-                          'Vencimiento:',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        SizedBox(width: 85),
-                        Icon(Icons.calendar_today, size: 16, color: Colors.grey),
-                        SizedBox(width: 5),
-                        Text(
-                          '10 de Julio, 2023',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, 'pay');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: primaryButton,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        child: const Text(
-                          'Pagar ahora',
-                          style: TextStyle(color: Colors.white),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 20),
+              Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                elevation: 3,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const Text(
+                            'Contribucion - Huerta',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Color(0xFF0B0B0B),
+                            ),
+                          ),
+                          const Spacer(),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.red[700],
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const Text(
+                              'Pendiente',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 6),
+                      const Text(
+                        'Contribucion para el proyecto de huerta escolar',
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        children: const [
+                          Text(
+                            'Monto:',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          SizedBox(width: 246),
+                          Text(
+                            '\$500',
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: const [
+                          Text(
+                            'Vencimiento:',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          SizedBox(width: 85),
+                          Icon(Icons.calendar_today, size: 16, color: Colors.grey),
+                          SizedBox(width: 5),
+                          Text(
+                            '10 de Julio, 2023',
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        children: const [
+                          Text(
+                            'Recargo:',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          SizedBox(width: 245),
+                          Text(
+                            '\$50',
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16,  color: Colors.red,),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'pay');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryButton,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: const Text(
+                            'Pagar ahora',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
 
 class PaymentMethodButton extends StatelessWidget {
   final IconData icon;
